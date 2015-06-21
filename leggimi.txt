@@ -1,0 +1,1 @@
+installare cordova, poi chrome con il plug in ripple emulator. Da cmd entrare nella cartella del progetto quindi: corodva pepare, cordova emulate
