@@ -1,4 +1,4 @@
-installare cordova, poi chrome con il plug in ripple emulator oppure ripple-emulator da cmd. Installare cordova e ripple in modalita globale -g. Da cmd entrare nella cartella del progetto quindi: cordova prepare, cordova emulate, oppure ripple emulate. Per far funzionare ripple, una volta aperto, inserire nell'uml questo: http://localhost:4400/platforms/browser/www/index.html?enableripple=cordova-3.0.0
+installare cordova, poi chrome con il plug in ripple emulator oppure ripple-emulator da cmd. Installare cordova e ripple in modalita globale -g. Da cmd entrare nella cartella del progetto quindi: cordova prepare, cordova emulate, oppure ripple emulate. Per far funzionare ripple, una volta aperto, inserire nell'url questo: http://localhost:4400/platforms/browser/www/index.html?enableripple=cordova-3.0.0
 
 altrimenti non si vede niente
 Chiaramente aggiungere come piattaforma il browser
