@@ -106,6 +106,7 @@ sub {
 
 img {
   border: 0;
+  margin-top: 8px;
 }
 
 svg:not(:root) {
@@ -779,7 +780,7 @@ input[type="button"] {
 }
 .table-view .media-object.pull-right {
   margin-left: 10px;
-}
+ }
 
 .table-view-cell > .btn,
 .table-view-cell > .badge,

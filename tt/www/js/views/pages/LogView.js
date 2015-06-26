@@ -1,18 +1,18 @@
 define(function(require) {
 
   var Backbone = require("backbone");
-  var MyModel = require("models/MyModel");
   var Utils = require("utils");
+	
+var LogView = Utils.Page.extend({
 
-  var ResultsView = Utils.Page.extend({
+    constructorName: "LogView",
 
-    constructorName: "ResultsView",
-
-    model: MyModel,
-
+    id: "log",
+	className: "i-g page", //fondamentale per funzionamento di ratchet
+	  
     initialize: function() {
       // load the precompiled template
-      this.template = Utils.templates.results;
+      this.template = Utils.templates.login;
       // here we can register to inTheDOM or removing events
       // this.listenTo(this, "inTheDOM", function() {
       //   $('#content').on("swipe", function(data){
@@ -24,34 +24,29 @@ define(function(require) {
       // by convention, all the inner views of a view must be stored in this.subViews
     },
 
-    id: "results",
-	className: "i-g page", //fondamentale per funzionamento di ratchet
-   
-
-   events: {
-      "tap #back": "search",
-      "tap #home": "home"
+	events: {
+      "tap #skip": "home",
+	  "tap #signin": "signin",
+      
     },
-
+	
     render: function() {
-      $(this.el).html(this.template(this.model.toJSON()));
+      $(this.el).html(this.template());
       return this;
     },
-
 	
-	home: function(e) {
+	 home: function(e) {
       Backbone.history.navigate("home", {
         trigger: true
       });
     },
-	
-    search: function(e) {
-      Backbone.history.navigate("search", {
+	 
+	 signin: function(e) {
+      Backbone.history.navigate("signin", {
         trigger: true
       });
     }
-  });
-
-  return ResultsView;
-
+	
+});
+	  return LogView;
 });

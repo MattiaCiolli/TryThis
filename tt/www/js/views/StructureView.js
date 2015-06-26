@@ -3,7 +3,7 @@ define(function(require) {
   var $ = require("jquery");
   var Backbone = require("backbone");
   var Utils = require("utils");
-
+  
   var StructureView = Backbone.View.extend({
 
     constructorName: "StructureView",
@@ -11,8 +11,11 @@ define(function(require) {
     id: "main",
 
     events: {
-      "tap #nav1": "results",
-      "tap #nav2": "search"
+      "tap #nav1": "login",
+      "tap #nav2": "home",
+	  "tap #nav3": "search",
+	  "tap #nav4": "results",
+	  "tap #nav5": "signin"
     },
 
     initialize: function(options) {
@@ -24,7 +27,9 @@ define(function(require) {
     },
 
     render: function() {
-      // load the template
+		
+		
+        // load the template
       this.el.innerHTML = this.template({});
       // cache a reference to the content element
       this.contentElement = this.$el.find('#content')[0];
@@ -45,6 +50,24 @@ define(function(require) {
       document.getElementById(elementId).classList.add("active");
     },
 
+	signin: function(event) {
+      Backbone.history.navigate("signin", {
+        trigger: true
+      });
+    }, 
+	
+	login: function(event) {
+      Backbone.history.navigate("login", {
+        trigger: true
+      });
+    }, 
+	
+	home: function(event) {
+      Backbone.history.navigate("home", {
+        trigger: true
+      });
+    }, 
+	
     search: function(event) {
       Backbone.history.navigate("search", {
         trigger: true

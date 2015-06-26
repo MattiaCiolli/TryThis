@@ -2,32 +2,33 @@
 require.config({
   paths: {
     jquery: '../lib/zepto/zepto', 
+	  jquery2: '../lib/jquery/jquery', 
     underscore: '../lib/underscore/underscore',
     backbone: "../lib/backbone/backbone",
     text: '../lib/require/text',
     async: '../lib/require/async',
     handlebars: '../lib/handlebars/handlebars',
     templates: '../templates',
-    leaflet: '../lib/leaflet/leaflet',
     spin: '../lib/spin/spin.min',
     preloader: '../lib/preloader/pre-loader',
     utils: '../lib/utils/utils',
-	
+	slideout:'../lib/slideout/dist/slideout',
+	 
   },
   shim: {
     'jquery': {
       exports: '$'
+    },
+	
     },
     'underscore': {
       exports: '_'
     },
     'handlebars': {
       exports: 'Handlebars'
-    },
-    'leaflet': {
-      exports: 'L'
     }
-  }
+   
+
 });
 
 // We launch the App

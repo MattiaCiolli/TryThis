@@ -11,6 +11,8 @@
 define({
     structure: "templates/structure.html",
     results: "templates/results.html",
-	search:"templates/search.html"
-
+	home: "templates/home.html",
+	search:"templates/search.html",
+	login:"templates/login.html",
+	signin:"templates/signin.html"
 });

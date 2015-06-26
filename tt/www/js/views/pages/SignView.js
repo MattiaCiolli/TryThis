@@ -1,0 +1,45 @@
+define(function(require) {
+
+  var Backbone = require("backbone");
+  var Utils = require("utils");
+	
+var SignView = Utils.Page.extend({
+
+    constructorName: "SignView",
+
+    id: "sign",
+	className: "i-g page", //fondamentale per funzionamento di ratchet
+	  
+    initialize: function() {
+      // load the precompiled template
+      this.template = Utils.templates.signin;
+      // here we can register to inTheDOM or removing events
+      // this.listenTo(this, "inTheDOM", function() {
+      //   $('#content').on("swipe", function(data){
+      //     console.Sign(data);
+      //   });
+      // });
+      // this.listenTo(this, "removing", functionName);
+
+      // by convention, all the inner views of a view must be stored in this.subViews
+    },
+
+	events: {
+      "tap #back": "login",
+      
+    },
+	
+    render: function() {
+      $(this.el).html(this.template());
+      return this;
+    },
+	
+	 login: function(e) {
+      Backbone.history.navigate("login", {
+        trigger: true
+      });
+    }
+	
+});
+	  return SignView;
+});

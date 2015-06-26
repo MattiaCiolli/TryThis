@@ -35,6 +35,15 @@ body {
   top: 0;
   overflow: hidden; }
 
+
+
+.center {
+  display: block;
+  margin: 15px;
+  top: 70px;
+  margin-left: auto;
+  margin-right: auto;
+} 
 .displaynone {
   display: none; }
 
