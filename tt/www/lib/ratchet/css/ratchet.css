@@ -106,8 +106,8 @@ sub {
 
 img {
   border: 0;
-  margin-top: 8px;
-}
+  margin-top: 0px;
+ }
 
 svg:not(:root) {
   overflow: hidden;
@@ -266,7 +266,10 @@ a:active {
   left: 0;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
-  background-color: #fff;
+  background-image: url("../../../img/back.png");
+  background-position: center top;
+  z-index: 1
+
 }
 
 .content > * {
@@ -699,7 +702,7 @@ input[type="button"] {
 .card {
   margin: 10px;
   overflow: hidden;
-  background-color: white;
+  background-color: rgba(255, 255, 255,1);
   border: 1px solid #ddd;
   border-radius: 6px;
 }
@@ -728,9 +731,10 @@ input[type="button"] {
   margin-top: 0;
   margin-bottom: 15px;
   list-style: none;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 1);
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
+  
 }
 
 .table-view-cell {
@@ -773,7 +777,7 @@ input[type="button"] {
 .table-view .media,
 .table-view .media-body {
   overflow: hidden;
-}
+  }
 
 .table-view .media-object.pull-left {
   margin-right: 10px;

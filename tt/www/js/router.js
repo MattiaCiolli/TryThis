@@ -9,6 +9,9 @@ define(function(require) {
   var HomeView = require("views/pages/HomeView");
   var LogView = require("views/pages/LogView");
   var SignView = require("views/pages/SignView");
+  var LogTTView = require("views/pages/LogTTView");
+  var AboutView = require("views/pages/AboutView");
+  var DetailView = require("views/pages/DetailView");
   var AppRouter = Backbone.Router.extend({
 
     constructorName: "AppRouter",
@@ -18,9 +21,12 @@ define(function(require) {
       "": "showStructure",
       "search": "search",
       "results": "results",
-		"home":"home",
-		"login":"login",
-		"signin":"signin"
+	  "home":"home",
+	  "login":"login",
+	  "signin":"signin",
+	  "loginTT":"loginTT",
+	  "about":"about",
+	  "detail":"detail"
 		
     },
 
@@ -30,7 +36,30 @@ define(function(require) {
       this.currentView = undefined;
     },
 
-    
+	detail: function() {
+      // highlight the nav2 tab bar element as the current one
+      this.structureView.setActiveTabBarElement("nav8");
+		// create the view and show it
+      var page = new DetailView();
+      this.changePage(page);
+    },
+	
+	about: function() {
+      // highlight the nav2 tab bar element as the current one
+      this.structureView.setActiveTabBarElement("nav7");
+		// create the view and show it
+      var page = new AboutView();
+      this.changePage(page);
+    },
+	
+    loginTT: function() {
+      // highlight the nav2 tab bar element as the current one
+      this.structureView.setActiveTabBarElement("nav6");
+		// create the view and show it
+      var page = new LogTTView();
+      this.changePage(page);
+    },
+	
 	signin: function() {
       // highlight the nav2 tab bar element as the current one
       this.structureView.setActiveTabBarElement("nav5");

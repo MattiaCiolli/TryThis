@@ -14,5 +14,8 @@ define({
 	home: "templates/home.html",
 	search:"templates/search.html",
 	login:"templates/login.html",
-	signin:"templates/signin.html"
+	signin:"templates/signin.html",
+	loginTT:"templates/loginTT.html",
+	about:"templates/about.html",
+	detail:"templates/detail.html"
 });

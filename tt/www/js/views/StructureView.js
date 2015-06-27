@@ -15,7 +15,10 @@ define(function(require) {
       "tap #nav2": "home",
 	  "tap #nav3": "search",
 	  "tap #nav4": "results",
-	  "tap #nav5": "signin"
+	  "tap #nav5": "signin",
+	  "tap #nav6": "loginTT",
+	  "tap #nav7": "about",
+	  "tap #nav8": "detail"
     },
 
     initialize: function(options) {
@@ -49,7 +52,25 @@ define(function(require) {
       document.getElementsByClassName("active")[0].classList.remove("active");
       document.getElementById(elementId).classList.add("active");
     },
+	
+	detail: function(event) {
+      Backbone.history.navigate("detail", {
+        trigger: true
+      });
+    }, 
 
+	about: function(event) {
+      Backbone.history.navigate("about", {
+        trigger: true
+      });
+    }, 
+	
+	loginTT: function(event) {
+      Backbone.history.navigate("loginTT", {
+        trigger: true
+      });
+    }, 
+	
 	signin: function(event) {
       Backbone.history.navigate("signin", {
         trigger: true

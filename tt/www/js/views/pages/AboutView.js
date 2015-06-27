@@ -3,16 +3,16 @@ define(function(require) {
   var Backbone = require("backbone");
   var Utils = require("utils");
 	
-var LogView = Utils.Page.extend({
+var AboutView = Utils.Page.extend({
 
-    constructorName: "LogView",
+    constructorName: "AboutView",
 
-    id: "log",
+    id: "about",
 	className: "i-g page", //fondamentale per funzionamento di ratchet
 	  
     initialize: function() {
       // load the precompiled template
-      this.template = Utils.templates.login;
+      this.template = Utils.templates.about;
       // here we can register to inTheDOM or removing events
       // this.listenTo(this, "inTheDOM", function() {
       //   $('#content').on("swipe", function(data){
@@ -22,13 +22,11 @@ var LogView = Utils.Page.extend({
       // this.listenTo(this, "removing", functionName);
 
       // by convention, all the inner views of a view must be stored in this.subViews
+		
     },
 
 	events: {
-      "tap #skip": "home",
-	  "tap #signin": "signin",
-	  "tap #loginTT": "loginTT"
-      
+      "tap #back": "back",
     },
 	
     render: function() {
@@ -36,24 +34,12 @@ var LogView = Utils.Page.extend({
       return this;
     },
 	
-	 home: function(e) {
+	 back: function(e) {
       Backbone.history.navigate("home", {
-        trigger: true
-      });
-    },
-	 
-	  loginTT: function(e) {
-      Backbone.history.navigate("loginTT", {
-        trigger: true
-      });
-    },
-	  
-	 signin: function(e) {
-      Backbone.history.navigate("signin", {
         trigger: true
       });
     }
 	
 });
-	  return LogView;
+	  return AboutView;
 });

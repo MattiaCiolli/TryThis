@@ -3,16 +3,16 @@ define(function(require) {
   var Backbone = require("backbone");
   var Utils = require("utils");
 	
-var LogView = Utils.Page.extend({
+var LogTTView = Utils.Page.extend({
 
-    constructorName: "LogView",
+    constructorName: "LogTTView",
 
-    id: "log",
+    id: "logTT",
 	className: "i-g page", //fondamentale per funzionamento di ratchet
 	  
     initialize: function() {
       // load the precompiled template
-      this.template = Utils.templates.login;
+      this.template = Utils.templates.loginTT;
       // here we can register to inTheDOM or removing events
       // this.listenTo(this, "inTheDOM", function() {
       //   $('#content').on("swipe", function(data){
@@ -25,9 +25,8 @@ var LogView = Utils.Page.extend({
     },
 
 	events: {
-      "tap #skip": "home",
-	  "tap #signin": "signin",
-	  "tap #loginTT": "loginTT"
+      "tap #back": "login",
+	  "tap #login": "home",
       
     },
 	
@@ -42,18 +41,12 @@ var LogView = Utils.Page.extend({
       });
     },
 	 
-	  loginTT: function(e) {
-      Backbone.history.navigate("loginTT", {
-        trigger: true
-      });
-    },
-	  
-	 signin: function(e) {
-      Backbone.history.navigate("signin", {
+	 login: function(e) {
+      Backbone.history.navigate("login", {
         trigger: true
       });
     }
 	
 });
-	  return LogView;
+	  return LogTTView;
 });
