@@ -12,6 +12,8 @@ define(function(require) {
   var LogTTView = require("views/pages/LogTTView");
   var AboutView = require("views/pages/AboutView");
   var DetailView = require("views/pages/DetailView");
+  var UserView = require("views/pages/UserView");
+  var CategoryView = require("views/pages/CategoryView");
   var AppRouter = Backbone.Router.extend({
 
     constructorName: "AppRouter",
@@ -26,7 +28,9 @@ define(function(require) {
 	  "signin":"signin",
 	  "loginTT":"loginTT",
 	  "about":"about",
-	  "detail":"detail"
+	  "detail":"detail",
+	  "user":"user",
+	  "category":"category"
 		
     },
 
@@ -36,6 +40,22 @@ define(function(require) {
       this.currentView = undefined;
     },
 
+	category: function() {
+      // highlight the nav2 tab bar element as the current one
+      this.structureView.setActiveTabBarElement("nav10");
+		// create the view and show it
+      var page = new CategoryView();
+      this.changePage(page);
+    },
+	
+	user: function() {
+      // highlight the nav2 tab bar element as the current one
+      this.structureView.setActiveTabBarElement("nav9");
+		// create the view and show it
+      var page = new UserView();
+      this.changePage(page);
+    },
+	
 	detail: function() {
       // highlight the nav2 tab bar element as the current one
       this.structureView.setActiveTabBarElement("nav8");

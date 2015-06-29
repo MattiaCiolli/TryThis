@@ -17,5 +17,7 @@ define({
 	signin:"templates/signin.html",
 	loginTT:"templates/loginTT.html",
 	about:"templates/about.html",
-	detail:"templates/detail.html"
+	detail:"templates/detail.html",
+	user:"templates/user.html",
+	category:"templates/category.html"
 });

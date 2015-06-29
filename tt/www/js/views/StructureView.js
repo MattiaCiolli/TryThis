@@ -3,6 +3,7 @@ define(function(require) {
   var $ = require("jquery");
   var Backbone = require("backbone");
   var Utils = require("utils");
+  var Slideout = require("slideout");
   
   var StructureView = Backbone.View.extend({
 
@@ -18,16 +19,21 @@ define(function(require) {
 	  "tap #nav5": "signin",
 	  "tap #nav6": "loginTT",
 	  "tap #nav7": "about",
-	  "tap #nav8": "detail"
+	  "tap #nav8": "detail",
+	  "tap #nav9": "user",
+	  "tap #nav10": "category"
+		
+	
     },
 
     initialize: function(options) {
-      // load the precompiled template
+		
+	  // load the precompiled template
       this.template = Utils.templates.structure;
       //this.on("inTheDOM", this.rendered);
       // bind the back event to the goBack function
       //document.getElementById("back").addEventListener("back", this.goBack(), false);
-    },
+	   },
 
     render: function() {
 		
@@ -52,6 +58,18 @@ define(function(require) {
       document.getElementsByClassName("active")[0].classList.remove("active");
       document.getElementById(elementId).classList.add("active");
     },
+	
+	category: function(event) {
+      Backbone.history.navigate("category", {
+        trigger: true
+      });
+    }, 
+	
+	user: function(event) {
+      Backbone.history.navigate("user", {
+        trigger: true
+      });
+    }, 
 	
 	detail: function(event) {
       Backbone.history.navigate("detail", {

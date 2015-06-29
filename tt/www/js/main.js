@@ -1,8 +1,7 @@
 // here we put the paths to all the libraries and framework we will use
 require.config({
   paths: {
-    jquery: '../lib/zepto/zepto', 
-	  jquery2: '../lib/jquery/jquery', 
+    jquery: '../lib/zepto/zepto',
     underscore: '../lib/underscore/underscore',
     backbone: "../lib/backbone/backbone",
     text: '../lib/require/text',
@@ -13,6 +12,7 @@ require.config({
     preloader: '../lib/preloader/pre-loader',
     utils: '../lib/utils/utils',
 	slideout:'../lib/slideout/dist/slideout',
+	slick:'../lib/slick/slick/slick'
 	 
   },
   shim: {
