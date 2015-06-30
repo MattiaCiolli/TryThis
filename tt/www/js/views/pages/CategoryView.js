@@ -27,7 +27,8 @@ var CategoryView = Utils.Page.extend({
 
 	events: {
       "tap #back": "back",
-	  "tap #searchpref":"searchpref"
+	  "tap #search":"searchpref",
+	  "tap #detail":"detail"
     },
 	
     render: function() {
@@ -37,6 +38,18 @@ var CategoryView = Utils.Page.extend({
 	
 	 back: function(e) {
       Backbone.history.navigate("user", {
+        trigger: true
+      });
+    },
+	 
+	detail: function(e) {
+      Backbone.history.navigate("detail", {
+        trigger: true
+      });
+    },
+	 
+	 searchpref: function(e) {
+      Backbone.history.navigate("search", {
         trigger: true
       });
     }

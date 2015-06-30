@@ -26,6 +26,7 @@ var UserView = Utils.Page.extend({
 
 	events: {
       "tap #home": "home",
+	  "tap #category": "category"
       
     },
 	
@@ -36,6 +37,12 @@ var UserView = Utils.Page.extend({
 	
 	 home: function(e) {
       Backbone.history.navigate("home", {
+        trigger: true
+      });
+    },
+	 
+	 category: function(e) {
+      Backbone.history.navigate("category", {
         trigger: true
       });
     }

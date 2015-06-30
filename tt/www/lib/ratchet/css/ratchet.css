@@ -702,7 +702,7 @@ input[type="button"] {
 .card {
   margin: 10px;
   overflow: hidden;
-  background-color: rgba(255, 255, 255,1);
+  background-color: rgba(255, 255, 255,0.85);
   border: 1px solid #ddd;
   border-radius: 6px;
 }
@@ -711,6 +711,7 @@ input[type="button"] {
   margin-bottom: 0;
   border-top: 0;
   border-bottom: 0;
+  background-color: rgba(255, 255, 255,0);
 }
 .card .table-view .table-view-divider:first-child {
   top: 0;
@@ -769,7 +770,7 @@ input[type="button"] {
   margin-left: 0;
   font-weight: 500;
   color: #999;
-  background-color: #fafafa;
+  rgba(255, 255, 255,0);
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
 }

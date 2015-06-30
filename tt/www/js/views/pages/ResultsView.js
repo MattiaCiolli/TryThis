@@ -30,7 +30,8 @@ define(function(require) {
 
    events: {
       "tap #back": "search",
-      "tap #home": "home"
+      "tap #home": "home",
+	  "tap #detail": "detail"
     },
 
     render: function() {
@@ -41,6 +42,12 @@ define(function(require) {
 	
 	home: function(e) {
       Backbone.history.navigate("home", {
+        trigger: true
+      });
+    },
+	
+	detail: function(e) {
+      Backbone.history.navigate("detail", {
         trigger: true
       });
     },
