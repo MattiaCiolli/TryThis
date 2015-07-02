@@ -30,3 +30,71 @@ body {
 .slideout-open .slideout-menu {
   display: block;
 }
+
+
+.menu-header {
+  border-bottom: 1px solid #2a2d2f;
+  padding: 20px 0 20px 60px;
+  background: url('../assets/github.png') no-repeat 15px 15px;
+  background-size: 32px;
+}
+
+.menu-header-title {
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.menu-section {
+  margin: 25px 0;
+}
+
+.menu-section-title {
+  text-transform: uppercase;
+  color: #85888d;
+  font-weight: 200;
+  font-size: 13px;
+  letter-spacing: 1px;
+  padding: 0 20px;
+  margin:0;
+}
+
+.panel {
+  text-align: center;
+  padding-top: 5px;
+  min-height: 100%;
+}
+
+/**
+ * Header
+ */
+.panel-header {
+  margin: 85px auto 55px;
+}
+
+.title {
+  font-size: 3.2em;
+  line-height: 1em;
+  margin: 0 0 15px;
+  color: #4B5;
+  font-weight: 400;
+  padding-top: 82px;
+  background: url('../assets/mango-logo.png') no-repeat center top;
+}
+
+.subtitle {
+  font-weight: 400;
+  font-size: 1.3em;
+  line-height: 1.2em;
+  margin:0 0 45px 0;
+  color: #767676;
+}
+
+.btn-hamburger {
+  border: none;
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  outline:none;
+  background: url('../img/loader.gif') no-repeat left center;
+}

@@ -28,8 +28,8 @@ var CategoryView = Utils.Page.extend({
 	events: {
       "tap #back": "back",
 	  "tap #search":"searchpref",
-	  "tap #detail":"detail"
-    },
+	  "tap #detail":"detail",
+	},
 	
     render: function() {
       $(this.el).html(this.template());
