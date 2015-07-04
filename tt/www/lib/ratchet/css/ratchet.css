@@ -1126,7 +1126,7 @@ select {
 
 .slider {
   overflow: hidden;
-  background-color: #000;
+  background-color: rgba(0, 0, 0, 0);
 }
 .slider .slide-group {
   position: relative;
@@ -1142,7 +1142,7 @@ select {
   height: 100%;
   font-size: 14px;
   vertical-align: top;
-}
+  }
 
 .toggle {
   position: relative;

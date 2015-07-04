@@ -12,9 +12,7 @@ require.config({
     preloader: '../lib/preloader/pre-loader',
     utils: '../lib/utils/utils',
 	slideout:'../lib/slideout/dist/slideout',
-	slick:'../lib/slick/slick/slick'
-	 
-  },
+	},
   shim: {
     'jquery': {
       exports: '$'

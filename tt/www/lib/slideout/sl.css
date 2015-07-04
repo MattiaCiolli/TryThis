@@ -210,7 +210,7 @@ pre {
   bottom: 0;
   right: 0;
   z-index: 0;
-  width: 256px;
+  width: 248px;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   display: none;

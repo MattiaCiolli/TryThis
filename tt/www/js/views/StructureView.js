@@ -3,7 +3,6 @@ define(function(require) {
   var $ = require("jquery");
   var Backbone = require("backbone");
   var Utils = require("utils");
-  var Slideout = require("slideout");
   
   var StructureView = Backbone.View.extend({
 
@@ -21,8 +20,7 @@ define(function(require) {
 	  "tap #nav7": "about",
 	  "tap #nav8": "detail",
 	  "tap #nav9": "user",
-	  "tap #nav10": "category"
-		
+	  "tap #nav10": "category"	
 	
     },
 
@@ -42,12 +40,11 @@ define(function(require) {
       this.el.innerHTML = this.template({});
       // cache a reference to the content element
       this.contentElement = this.$el.find('#content')[0];
-      return this;
+		  
+     return this;
     },
 
-    // rendered: function(e) {
-    // },
-
+    
     // generic go-back function
     goBack: function() {
       //window.history.back();
@@ -58,6 +55,7 @@ define(function(require) {
       document.getElementsByClassName("active")[0].classList.remove("active");
       document.getElementById(elementId).classList.add("active");
     },
+	
 	
 	category: function(event) {
       Backbone.history.navigate("category", {
