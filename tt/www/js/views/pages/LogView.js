@@ -2,7 +2,8 @@ define(function(require) {
 
   var Backbone = require("backbone");
   var Utils = require("utils");
-	
+ 
+ 	
 var LogView = Utils.Page.extend({
 
     constructorName: "LogView",
@@ -13,7 +14,7 @@ var LogView = Utils.Page.extend({
     initialize: function() {
       // load the precompiled template
       this.template = Utils.templates.login;
-      // here we can register to inTheDOM or removing events
+	  // here we can register to inTheDOM or removing events
       // this.listenTo(this, "inTheDOM", function() {
       //   $('#content').on("swipe", function(data){
       //     console.log(data);
@@ -32,8 +33,8 @@ var LogView = Utils.Page.extend({
     },
 	
     render: function() {
-      $(this.el).html(this.template());
-      return this;
+      $(this.el).html(this.template());		
+		return this;
     },
 	
 	 home: function(e) {
@@ -49,7 +50,7 @@ var LogView = Utils.Page.extend({
     },
 	  
 	 signin: function(e) {
-      Backbone.history.navigate("signin", {
+		Backbone.history.navigate("signin", {
         trigger: true
       });
     }

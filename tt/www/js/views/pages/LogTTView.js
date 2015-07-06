@@ -25,8 +25,8 @@ var LogTTView = Utils.Page.extend({
     },
 
 	events: {
-      "tap #back": "login",
-	  "tap #login": "home",
+      "tap #back": "back",
+	  "tap #login": "login",
       
     },
 	
@@ -35,13 +35,22 @@ var LogTTView = Utils.Page.extend({
       return this;
     },
 	
-	 home: function(e) {
-      Backbone.history.navigate("home", {
-        trigger: true
-      });
-    },
-	 
 	 login: function(e) {
+    var user= this.$el.find("#username")[0].value;
+
+    var pword = this.$el.find("#password")[0].value;
+
+    alert("You logged in as " + user + " and a password of " + pword);
+
+    return false;
+		 
+		 Backbone.history.navigate("home", {
+        trigger: true
+
+  },
+
+	 
+	 back: function(e) {
       Backbone.history.navigate("login", {
         trigger: true
       });

@@ -11,8 +11,9 @@ require.config({
     spin: '../lib/spin/spin.min',
     preloader: '../lib/preloader/pre-loader',
     utils: '../lib/utils/utils',
-	slideout:'../lib/slideout/dist/slideout',
+	slideout:'../lib/slideout/dist/slideout'	
 	},
+  
   shim: {
     'jquery': {
       exports: '$'
