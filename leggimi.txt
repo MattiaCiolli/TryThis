@@ -1,4 +1,12 @@
 installare cordova, poi chrome con il plug in ripple emulator oppure ripple-emulator(meglio) da cmd tramite npm. Installare cordova e ripple in modalita globale -g. Da cmd entrare nella cartella del progetto quindi: cordova prepare, cordova emulate, oppure ripple emulate(meglio). Per far funzionare ripple, una volta aperto, inserire nell'url questo: http://localhost:4400/platforms/browser/www/index.html?enableripple=cordova-3.0.0
 
 altrimenti non si vede niente
-Chiaramente aggiungere come piattaforma il browser
+
+
+EMULATORE ANDROID
+avviare un emulatore da avdmanager. Deve essere android >=2.3, 1024mb ram, vm=64. Lo schermo meglio se 480*800.
+Una volta avviato fare da cmd, nella crtella del prog, cordova build e poi cordova emulate. Dovrebbe installare e lanciare la app sull'emulatore. Qust'ultimo funziona na merda però...
+
+Se vai nella cartella del progetto, poi platforms/android/build/outputs/apk, puoi prendere andoid-debug.apk e installarla sul telefono.
+
+Io l'ho fatto e funziona discretamente anche se è tutto troppo piccolo
