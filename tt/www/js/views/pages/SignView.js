@@ -43,10 +43,13 @@ var SignView = Utils.Page.extend({
     },
 	 
 	 signin: function(e) {
-	  u = new User({username: this.$el.find("#username")[0].value, pwd:this.$el.find("#password")[0].value, email:this.$el.find("#email")[0].value});
-		 u.save();
-	    alert("You logged in as " + u.get("username") + " and a password of " + u.get("pwd")+ u.get("email"));
-		 
+	  var u = new User({username: this.$el.find("#username")[0].value, pwd:this.$el.find("#password")[0].value, email:this.$el.find("#email")[0].value});
+		localStorage.setItem(u.get("username"), JSON.stringify(u));
+		 localStorage.setItem("user", u.get("username"));
+	    alert("Created " + u.get("username") + " and a password of " + u.get("pwd")+" "+ u.get("email"));
+		 Backbone.history.navigate("home", {
+        trigger: true
+      });
 	},
     
 });

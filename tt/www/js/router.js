@@ -134,7 +134,7 @@ define(function(require) {
       // go to first view
 	  var user=localStorage.getItem("user");
 	  console.log(user);
-	  if(user=="N-o-N-e")
+	  if(user==null)
 	  {
 		  var firstView= "login";
 	  }

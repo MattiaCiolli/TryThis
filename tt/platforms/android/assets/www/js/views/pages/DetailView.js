@@ -28,6 +28,7 @@ var DetailView = Utils.Page.extend({
 	events: {
       "tap #add": "add",
       "tap #back": "back",
+	  "tap #home": "home"
 	    },
 	
     render: function() {
@@ -37,6 +38,12 @@ var DetailView = Utils.Page.extend({
 	
 	 back: function(e) {
       Backbone.history.navigate("results", {
+        trigger: true
+      });
+    },
+	 
+	 home: function(e) {
+      Backbone.history.navigate("home", {
         trigger: true
       });
     }

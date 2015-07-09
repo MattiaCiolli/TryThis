@@ -2,7 +2,7 @@ define(function(require) {
 
   var Backbone = require("backbone");
   var Utils = require("utils");
-	
+ 
 var LogTTView = Utils.Page.extend({
 
     constructorName: "LogTTView",
@@ -38,13 +38,29 @@ var LogTTView = Utils.Page.extend({
 	 login: function(e) {
     var actualuser= this.$el.find("#username")[0].value;
     var pword = this.$el.find("#password")[0].value;
-	localStorage.setItem("user", actualuser);
-	console.log(actualuser);
-    //Backbone.sync("read",models);
+	var tempu=JSON.parse(localStorage.getItem(actualuser));
 		 
-		 Backbone.history.navigate("home", {
-        trigger: true
-		 });
+		 if(tempu["pwd"]==pword)
+		 {
+			 localStorage.setItem("user", actualuser);
+			alert("Welcome "+actualuser+"!");
+    		//Backbone.sync("read",models);
+		 
+			 Backbone.history.navigate("home", {
+        	trigger: true
+			 });
+		 }
+		 else if(tempu["pwd"]!=pword)
+		 {
+			 alert("Wrong password or username");
+			 //Necessario per ricaricare la pagina
+			 Backbone.history.navigate("login", {
+        	trigger: true
+      		});
+			 Backbone.history.navigate("loginTT", {
+        	trigger: true
+      		});
+		 }
   },
 
 	 

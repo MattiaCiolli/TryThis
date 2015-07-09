@@ -92,7 +92,7 @@ var HomeView = Utils.Page.extend({
     },
 	 
 	 logout: function(e) {
-		 localStorage.setItem("user", "N-o-N-e");
+		 localStorage.removeItem("user");
       Backbone.history.navigate("login", {
         trigger: true
       });

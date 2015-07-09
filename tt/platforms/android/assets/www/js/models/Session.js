@@ -4,7 +4,7 @@ define(function(require) {
     
 	var Session = Backbone.Model.extend({
 		defaults: {
-		actualuser: 'N-o-N-e'
+		actualuser: null
 				}
 			});
 	return Session;
