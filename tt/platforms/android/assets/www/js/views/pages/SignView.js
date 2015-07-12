@@ -44,8 +44,11 @@ var SignView = Utils.Page.extend({
 	 
 	 signin: function(e) {
 	  var u = new User({username: this.$el.find("#username")[0].value, pwd:this.$el.find("#password")[0].value, email:this.$el.find("#email")[0].value});
+		 //u.save();
+
 		localStorage.setItem(u.get("username"), JSON.stringify(u));
 		 localStorage.setItem("user", u.get("username"));
+		 
 	    alert("Created " + u.get("username") + " and a password of " + u.get("pwd")+" "+ u.get("email"));
 		 Backbone.history.navigate("home", {
         trigger: true

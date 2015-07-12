@@ -2,6 +2,7 @@ define(function(require) {
 
   var Backbone = require("backbone");
   var Utils = require("utils");
+  var Testo = require("models/Testo");
 	
 var DetailView = Utils.Page.extend({
 
@@ -9,7 +10,7 @@ var DetailView = Utils.Page.extend({
 
     id: "detail",
 	className: "i-g page", //fondamentale per funzionamento di ratchet
-	  
+	  model:Testo,
     initialize: function() {
       // load the precompiled template
       this.template = Utils.templates.detail;
@@ -32,7 +33,7 @@ var DetailView = Utils.Page.extend({
 	    },
 	
     render: function() {
-      $(this.el).html(this.template());
+      $(this.el).html(this.template(this.model.toJSON()));
       return this;
     },
 	

@@ -14,6 +14,7 @@ define(function(require) {
   var UserView = require("views/pages/UserView");
   var CategoryView = require("views/pages/CategoryView");
   var Session = require("models/Session");
+  var Testo = require("models/Testo");
   var AppRouter = Backbone.Router.extend({
 
     constructorName: "AppRouter",
@@ -62,8 +63,16 @@ define(function(require) {
 	detail: function() {
       // highlight the nav2 tab bar element as the current one
       this.structureView.setActiveTabBarElement("nav8");
+		var t=null;
+		$.getJSON('http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=Jimi_Hendrix', function(jd) {
+                  t= jd.title;
+                  });
+	
+		
+		alert(t);
+		var testo=new Testo({txt:t});
 		// create the view and show it
-      var page = new DetailView();
+      var page = new DetailView({model:testo});
       this.changePage(page);
     },
 	

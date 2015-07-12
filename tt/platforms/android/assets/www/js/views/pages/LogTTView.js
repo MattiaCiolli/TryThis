@@ -40,6 +40,20 @@ var LogTTView = Utils.Page.extend({
     var pword = this.$el.find("#password")[0].value;
 	var tempu=JSON.parse(localStorage.getItem(actualuser));
 		 
+		 if(tempu==null)
+		 {
+		 	alert("Wrong password or username");
+			 //Necessario per ricaricare la pagina
+			 Backbone.history.navigate("login", {
+        	trigger: true
+      		});
+			 Backbone.history.navigate("loginTT", {
+        	trigger: true
+      		});
+		 }
+		 
+		 else if(tempu!=null)
+		 {
 		 if(tempu["pwd"]==pword)
 		 {
 			 localStorage.setItem("user", actualuser);
@@ -60,6 +74,7 @@ var LogTTView = Utils.Page.extend({
 			 Backbone.history.navigate("loginTT", {
         	trigger: true
       		});
+		 }
 		 }
   },
 
