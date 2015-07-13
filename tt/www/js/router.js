@@ -63,13 +63,20 @@ define(function(require) {
 	detail: function() {
       // highlight the nav2 tab bar element as the current one
       this.structureView.setActiveTabBarElement("nav8");
-		var t=null;
-		$.getJSON('http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=Jimi_Hendrix', function(jd) {
-                  t= jd.title;
-                  });
-	
-		
-		alert(t);
+		var xmlHTTP = new XMLHttpRequest();
+        xmlHTTP.open("GET", 'http://en.wikipedia.org/w/api.php?action=parse&format=xml&prop=text&section=1&page=Furious_7', false);
+		 xmlHTTP.setRequestHeader("Content-Type", "text/xml");
+  		xmlHTTP.send(null);
+
+		//$.getJSON('http://en.wikipedia.org/w/api.php?action=parse&format=xml&prop=text&section=1&page=Furious_7', function(jd) {
+         var doc = xmlHTTP.responseXML;
+		var Customers = doc.childNodes[0].textContent;
+		 var mydiv = document.createElement("div");
+
+           mydiv.innerHTML = Customers;
+		var t=  mydiv.textContent;
+                            
+   		alert(t);
 		var testo=new Testo({txt:t});
 		// create the view and show it
       var page = new DetailView({model:testo});
