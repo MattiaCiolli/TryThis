@@ -2,7 +2,7 @@ define(function(require) {
 
   var Backbone = require("backbone");
   var Utils = require("utils");
-  var Testo = require("models/Testo");
+  var Media = require("models/Media");
 	
 var DetailView = Utils.Page.extend({
 
@@ -10,7 +10,7 @@ var DetailView = Utils.Page.extend({
 
     id: "detail",
 	className: "i-g page", //fondamentale per funzionamento di ratchet
-	  model:Testo,
+	  model:Media,
     initialize: function() {
       // load the precompiled template
       this.template = Utils.templates.detail;

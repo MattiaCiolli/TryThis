@@ -26,8 +26,11 @@ var UserView = Utils.Page.extend({
 
 	events: {
       "tap #home": "home",
-	  "tap #category": "category"
-      
+	  "tap #movies": "category",
+      "tap #books": "category",
+	  "tap #series": "category",
+	  "tap #games": "category",
+	  "tap #music": "category",
     },
 	
     render: function() {
@@ -43,10 +46,42 @@ var UserView = Utils.Page.extend({
     },
 	 
 	 category: function(e) {
+		 if(e.currentTarget.id=="movies")
+		 {
+			 localStorage.setItem("catID", "movies");
       Backbone.history.navigate("category", {
         trigger: true
       });
     }
+		 if(e.currentTarget.id=="music")
+		 {
+			 localStorage.setItem("catID", "music");
+      Backbone.history.navigate("category", {
+        trigger: true
+      });
+    }
+		 if(e.currentTarget.id=="games")
+		 {
+			 localStorage.setItem("catID", "games");
+      Backbone.history.navigate("category", {
+        trigger: true
+      });
+    }
+		 if(e.currentTarget.id=="books")
+		 {
+			 localStorage.setItem("catID", "books");
+      Backbone.history.navigate("category", {
+        trigger: true
+      });
+    }
+		 if(e.currentTarget.id=="series")
+		 {
+			 localStorage.setItem("catID", "series");
+      Backbone.history.navigate("category", {
+        trigger: true
+      });
+    }
+	 }
 	
 });
 	  return UserView;

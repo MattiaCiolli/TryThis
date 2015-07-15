@@ -15,6 +15,7 @@ define(function(require) {
   var CategoryView = require("views/pages/CategoryView");
   var Session = require("models/Session");
   var Testo = require("models/Testo");
+  var Media=require("models/Media");
   var AppRouter = Backbone.Router.extend({
 
     constructorName: "AppRouter",
@@ -42,8 +43,21 @@ define(function(require) {
 	category: function() {
       // highlight the nav2 tab bar element as the current one
       this.structureView.setActiveTabBarElement("nav10");
+		
+		if(localStorage.getItem("catID")=="movies")
+		{var t=new Testo({txt:"My Movies"});}
+		else if(localStorage.getItem("catID")=="books")
+		{var t=new Testo({txt:"My Books"});}
+		else if(localStorage.getItem("catID")=="games")
+		{var t=new Testo({txt:"My Games"});}
+		else if(localStorage.getItem("catID")=="series")
+		{var t=new Testo({txt:"My Tv series"});}
+		else if(localStorage.getItem("catID")=="music")
+		{var t=new Testo({txt:"My Music"});}
 		// create the view and show it
-      var page = new CategoryView();
+      var page = new CategoryView({
+			model:t
+	  });
       this.changePage(page);
     },
 	
@@ -67,19 +81,15 @@ define(function(require) {
         xmlHTTP.open("GET", 'http://en.wikipedia.org/w/api.php?action=parse&format=xml&prop=text&section=1&page=Furious_7', false);
 		 xmlHTTP.setRequestHeader("Content-Type", "text/xml");
   		xmlHTTP.send(null);
-
-		//$.getJSON('http://en.wikipedia.org/w/api.php?action=parse&format=xml&prop=text&section=1&page=Furious_7', function(jd) {
          var doc = xmlHTTP.responseXML;
-		var Customers = doc.childNodes[0].textContent;
+		var doc1 = doc.childNodes[0].textContent;
 		 var mydiv = document.createElement("div");
-
-           mydiv.innerHTML = Customers;
-		var t=  mydiv.textContent;
-                            
+           mydiv.innerHTML = doc1;
+		var t=  mydiv.textContent;                           
    		alert(t);
-		var testo=new Testo({txt:t});
+		var media=new Media({txt:t});
 		// create the view and show it
-      var page = new DetailView({model:testo});
+      var page = new DetailView({model:media});
       this.changePage(page);
     },
 	

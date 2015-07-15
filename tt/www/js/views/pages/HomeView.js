@@ -109,34 +109,40 @@ var HomeView = Utils.Page.extend({
 	 search: function(e) {
 		 if(e.currentTarget.id=="searchmovies")
 		 {
-      Backbone.history.navigate("results", {
+		localStorage.setItem("searchelement", "searchmovies");
+		Backbone.history.navigate("search", {
         trigger: true
 	      });
 		 }
 		 else if(e.currentTarget.id=="searchgames")
 		 {
-      Backbone.history.navigate("results", {
+	 localStorage.setItem("searchelement", "searchgames");
+      Backbone.history.navigate("search", {
         trigger: true
 	      });
 	   }
 		 else if(e.currentTarget.id=="searchbooks")
 		 {
-      Backbone.history.navigate("results", {
+		localStorage.setItem("searchelement", "searchbooks");
+      Backbone.history.navigate("search", {
         trigger: true
 	      });
 	   }
 		 else if(e.currentTarget.id=="searchseries")
 		 {
-      Backbone.history.navigate("results", {
+		localStorage.setItem("searchelement", "searchseries");
+      Backbone.history.navigate("search", {
         trigger: true
 	      });
 	   }
 		 else if(e.currentTarget.id=="searchmusic")
 		 {
-      Backbone.history.navigate("results", {
+		localStorage.setItem("searchelement", "searchmusic");
+      Backbone.history.navigate("search", {
         trigger: true
 	      });
 	   }
+		
     },  
 	 
 	 

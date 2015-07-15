@@ -26,19 +26,44 @@ var SearchView = Utils.Page.extend({
 
 	events: {
       "tap #back": "home",
-      "tap #search": "risultati"
+      "tap #search": "results"
     },
 	
     render: function() {
       $(this.el).html(this.template());
+		if(localStorage.getItem("searchelement")== "searchmovies")
+			{this.setActiveSearch("#Movies");
+			this.setActiveSearch("#M");}
+		else if(localStorage.getItem("searchelement")== "searchmusic")
+			{this.setActiveSearch("#Music");
+			this.setActiveSearch("#Mus");}
+		else if(localStorage.getItem("searchelement")== "searchbooks")
+			{this.setActiveSearch("#Books");
+			this.setActiveSearch("#B");}
+		else if(localStorage.getItem("searchelement")== "searchgames")
+			{this.setActiveSearch("#Games");
+			this.setActiveSearch("#G");}
+		else if(localStorage.getItem("searchelement")== "searchseries")
+			{this.setActiveSearch("#Series");
+			this.setActiveSearch("#S");}
       return this;
     },
 	
-	 risultati: function(e) {
+	 results: function(e) {
       Backbone.history.navigate("results", {
         trigger: true
       });
-    }
+    },
+	 
+	 home: function(e) {
+      Backbone.history.navigate("home", {
+        trigger: true
+      });
+    },
+	 
+	 setActiveSearch: function(elementId) {
+       this.$el.find(elementId)[0].classList.add("active");
+    },
 	
 });
 	  return SearchView;

@@ -8,7 +8,7 @@ define(function(require) {
 		defaults: {
 		type: 'none',
 		title:'none',
-		description:'none',
+		txt:'none',
 		image:'none'
 	},
 	});

@@ -2,14 +2,14 @@ define(function(require) {
 
   var Backbone = require("backbone");
   var Utils = require("utils");
-	
+  var Testo=require("models/Testo");
 var CategoryView = Utils.Page.extend({
 
     constructorName: "CategoryView",
 
     id: "category",
 	className: "i-g page", //fondamentale per funzionamento di ratchet
-	  
+	 model:Testo, 
     initialize: function() {
       // load the precompiled template
       this.template = Utils.templates.category;
@@ -32,8 +32,8 @@ var CategoryView = Utils.Page.extend({
 	},
 	
     render: function() {
-      $(this.el).html(this.template());
-      return this;
+	$(this.el).html(this.template(this.model.toJSON()));
+	return this;
     },
 	
 	 back: function(e) {
