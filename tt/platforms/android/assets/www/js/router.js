@@ -18,6 +18,7 @@ define(function(require) {
   var Media=require("models/Media");
   var AppRouter = Backbone.Router.extend({
 
+	  
     constructorName: "AppRouter",
 
     routes: {
@@ -61,12 +62,11 @@ define(function(require) {
       this.changePage(page);
     },
 	
-	user: function() {
+user: function() {
       // highlight the nav2 tab bar element as the current one
       this.structureView.setActiveTabBarElement("nav9");
-		 var user=localStorage.getItem("user");
-		var session=new Session({actualuser:user});
-		// create the view and show it
+		 //var user=localStorage.getItem("user");
+var session=new Session();
       var page = new UserView({ 
          model: session 
        }); 
@@ -74,22 +74,41 @@ define(function(require) {
       this.changePage(page);
     },
 	
-	detail: function() {
+
+detail: function() {
+	
       // highlight the nav2 tab bar element as the current one
       this.structureView.setActiveTabBarElement("nav8");
-		var xmlHTTP = new XMLHttpRequest();
-        xmlHTTP.open("GET", 'http://en.wikipedia.org/w/api.php?action=parse&format=xml&prop=text&section=1&page=Furious_7', false);
-		 xmlHTTP.setRequestHeader("Content-Type", "text/xml");
-  		xmlHTTP.send(null);
-         var doc = xmlHTTP.responseXML;
-		var doc1 = doc.childNodes[0].textContent;
-		 var mydiv = document.createElement("div");
-           mydiv.innerHTML = doc1;
-		var t=  mydiv.textContent;                           
-   		alert(t);
-		var media=new Media({txt:t});
-		// create the view and show it
-      var page = new DetailView({model:media});
+	var search="Wanted";
+//query to database
+function queryDB(tx) 
+		{
+  tx.executeSql('SELECT * FROM FILM WHERE title="'+ search+ '"', [], querySuccess, errorCB);
+}
+
+//in questo caso fa il log dell'anno del film, si puo usare per popolare template tramite oggetto, basta mettere tutto in querysuccess per lo scope della var
+function querySuccess(tx, results) {
+console.log("Returned rows = " + results.rows.length);
+
+	var media=new Media({year:results.rows.item(0).year, title:results.rows.item(0).title, genre:results.rows.item(0).genre, img:results.rows.item(0).img, txt:results.rows.item(0).txt});
+	localStorage.setItem("media",JSON.stringify(media));
+// this will be true since it was a select statement and so rowsAffected was 0
+if (!results.rowsAffected) {
+  console.log('No rows affected!');
+  return false;
+}
+// for an insert statement, this property will return the ID of the last inserted row
+console.log("Last inserted row ID = " + results.insertId);
+}
+
+function errorCB(err) {
+    alert("Error processing SQL: "+err.code);
+}
+//opens database and queries it
+var db = window.openDatabase("Database", "1.0", "Database media", 200000);
+db.transaction(queryDB, errorCB);
+
+var page = new DetailView();
       this.changePage(page);
     },
 	

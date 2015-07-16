@@ -54,7 +54,30 @@ require(['backbone', 'utils'], function(Backbone, Utils) {
         }
 
         function startRouter() {
-          // launch the router
+         //create database
+        var db = window.openDatabase("Database", "1.0", "Database media", 200000);
+        db.transaction(populateDB, errorCB, successCB);
+    
+		// Populate the database 
+    function populateDB(tx) {
+         tx.executeSql('DROP TABLE IF EXISTS FILM');
+         tx.executeSql('CREATE TABLE IF NOT EXISTS FILM (title unique, txt, genre, year, img)');
+         tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("Fast and furious 7", "trama varia", "action", "2014", "http://pad.mymovies.it/filmclub/2013/10/194/locandinapg2.jpg")');
+         tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("Wanted", "trama varia", "action", "2008", "http://www.cinemadelsilenzio.it/images/film/poster/7732_big.jpg")');
+    }
+
+    // Transaction error callback
+    //
+    function errorCB(tx, err) {
+        alert("Error processing SQL: "+err);
+    }
+	// Transaction success callback
+    //
+    function successCB() {
+        alert("success!");
+    }
+
+			 // launch the router
           var router = new AppRouter();
           Backbone.history.start();
         }

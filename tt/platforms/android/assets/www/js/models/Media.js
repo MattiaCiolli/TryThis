@@ -6,10 +6,11 @@ define(function(require) {
 		constructorName: "Media",
 		
 		defaults: {
-		type: 'none',
+		genre: 'none',
 		title:'none',
 		txt:'none',
-		image:'none'
+		img:'none',
+		year:'none'
 	},
 	});
 
