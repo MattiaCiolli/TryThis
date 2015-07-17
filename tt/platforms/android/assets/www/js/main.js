@@ -62,9 +62,27 @@ require(['backbone', 'utils'], function(Backbone, Utils) {
     function populateDB(tx) {
          tx.executeSql('DROP TABLE IF EXISTS FILM');
          tx.executeSql('CREATE TABLE IF NOT EXISTS FILM (title unique, txt, genre, year, img)');
-         tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("Fast and furious 7", "trama varia", "action", "2014", "http://ia.media-imdb.com/images/M/MV5BMTQxOTA2NDUzOV5BMl5BanBnXkFtZTgwNzY2MTMxMzE@._V1_SX640_SY720_.jpg")');
-         tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("Wanted", "trama varia", "action", "2008", "http://ia.media-imdb.com/images/M/MV5BMTQwNDM2MTMwMl5BMl5BanBnXkFtZTgwMjE4NjQxMTE@._V1_SX214_AL_.jpg")');
+                 tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("Fast and furious 7", "trama varia", "action", "2014", "http://ia.media-imdb.com/images/M/MV5BMTQxOTA2NDUzOV5BMl5BanBnXkFtZTgwNzY2MTMxMzE@._V1_SX640_SY720_.jpg")');
+                 tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("Wanted", "trama varia", "action", "2008", "http://ia.media-imdb.com/images/M/MV5BMTQwNDM2MTMwMl5BMl5BanBnXkFtZTgwMjE4NjQxMTE@._V1_SX214_AL_.jpg")');
 		 tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("Dumb and dumber", "trama varia", "comedy", "1994", "http://ia.media-imdb.com/images/M/MV5BMTIzNDI5MTc0M15BMl5BanBnXkFtZTYwMjM5NDU5._V1_SX640_SY720_.jpg")');
+		 tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("I robot", "trama varia", "sci-fi", "2004", "http://ia.media-imdb.com/images/M/MV5BMTQwNzI5NTQ0OF5BMl5BanBnXkFtZTYwMTI3Mjk2._V1_SX214_AL_.jpg")');
+		 tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("I am legend", "trama varia", "sci-fi", "2007", "http://ia.media-imdb.com/images/M/MV5BMTU4NzMyNDk1OV5BMl5BanBnXkFtZTcwOTEwMzU1MQ@@._V1_SX640_SY720_.jpg")'); //5
+                 tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("Titanic", "trama varia", "romantic", "1997", "http://ia.media-imdb.com/images/M/MV5BMjExNzM0NDM0N15BMl5BanBnXkFtZTcwMzkxOTUwNw@@._V1_SY317_CR0,0,214,317_AL_.jpg"');
+                 tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("The Lord of the Rings: The Fellowship of the Ring", "trama varia", fantasy", "2001", "http://ia.media-imdb.com/images/M/MV5BNTEyMjAwMDU1OV5BMl5BanBnXkFtZTcwNDQyNTkxMw@@._V1_SY317_CR1,0,214,317_AL_.jpg"');
+                 tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("The Exorcist", "trama varia", "horror", "1973", "http://ia.media-imdb.com/images/M/MV5BNzYwMDA0NTA3M15BMl5BanBnXkFtZTcwMDcwNDY3Mg@@._V1_SY317_CR0,0,214,317_AL_.jpg"');
+                 tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("Ghost", "trama varia", "romantic", "1990", "http://ia.media-imdb.com/images/M/MV5BMTU0NzQzODUzNl5BMl5BanBnXkFtZTgwMjc5NTYxMTE@._V1_SY317_CR0,0,214,317_AL_.jpg"');
+                 tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("The Hangover", "trama varia", "comedy", "2009", "http://ia.media-imdb.com/images/M/MV5BMTU1MDA1MTYwMF5BMl5BanBnXkFtZTcwMDcxMzA1Mg@@._V1_SX214_AL_.jpg"'); //10
+                 tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("2001: A Space Odyssey", "trama varia", "sci-fi", "1968", "http://www.imdb.com/media/rm1770761216/tt0062622?ref_=tt_ov_i"');
+                 tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("Saw", "trama varia", "horror", "2004", "http://ia.media-imdb.com/images/M/MV5BMjAyNTcxNzYwMV5BMl5BanBnXkFtZTgwMzQzNzM5MjE@._V1_SX214_AL_.jpg"');
+                 tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("Harry Potter and the Prisoner of Azkaban", "trama varia", "fantasy", "2004", "http://ia.media-imdb.com/images/M/MV5BMTY4NTIwODg0N15BMl5BanBnXkFtZTcwOTc0MjEzMw@@._V1_SY317_CR0,0,214,317_AL_.jpg"');
+                 tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("The Devil Wears Prada", "trama varia", "comedy", "2006", "http://ia.media-imdb.com/images/M/MV5BMTMyNjk4Njc3NV5BMl5BanBnXkFtZTcwNDkyMTEzMw@@._V1_SX214_AL_.jpg"');
+                 tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("Pulp Fiction", "trama varia", "drama", "1994", "http://ia.media-imdb.com/images/M/MV5BMjE0ODk2NjczOV5BMl5BanBnXkFtZTYwNDQ0NDg4._V1_SY317_CR4,0,214,317_AL_.jpg"'); //15
+                 tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("The Green Mile", "trama varia", "drama", "1999", "http://ia.media-imdb.com/images/M/MV5BMTUxMzQyNjA5MF5BMl5BanBnXkFtZTYwOTU2NTY3._V1_SY317_CR0,0,214,317_AL_.jpg"');
+                 tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("Le fabuleux destin d\'Amélie Poulain", "trama varia", "romantic", "2001", "http://ia.media-imdb.com/images/M/MV5BMTYzNjkxMTczOF5BMl5BanBnXkFtZTgwODg5NDc2MjE@._V1_SY317_CR0,0,214,317_AL_.jpg"');
+                 tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("Forrest Gump", "trama varia", "drama", "1994", "http://ia.media-imdb.com/images/M/MV5BMTQwMTA5MzI1MF5BMl5BanBnXkFtZTcwMzY5Mzg3OA@@._V1_SX214_AL_.jpg"');
+                 tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("The Bourne Identity", "trama varia", "action", "2002, "http://ia.media-imdb.com/images/M/MV5BMTQ3MDA4MDIyN15BMl5BanBnXkFtZTYwOTg0Njk4._V1_SX214_AL_.jpg"');
+                 tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("The Chronicles of Narnia: The Voyage of the Dawn Treader", "trama varia", "fantasy", "2010", "http://ia.media-imdb.com/images/M/MV5BNjQ2MDQzMzExNl5BMl5BanBnXkFtZTcwMTYzOTc5Mw@@._V1_SX214_AL_.jpg"'); //20
+                 
     }
 
     // Transaction error callback
