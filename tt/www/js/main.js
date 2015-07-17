@@ -67,6 +67,8 @@ require(['backbone', 'utils'], function(Backbone, Utils) {
 		 tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("Dumb and dumber", "trama varia", "comedy", "1994", "http://ia.media-imdb.com/images/M/MV5BMTIzNDI5MTc0M15BMl5BanBnXkFtZTYwMjM5NDU5._V1_SX640_SY720_.jpg")');
 		 tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("I robot", "trama varia", "sci-fi", "2004", "http://ia.media-imdb.com/images/M/MV5BMTQwNzI5NTQ0OF5BMl5BanBnXkFtZTYwMTI3Mjk2._V1_SX214_AL_.jpg")');
 		 tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("I am legend", "trama varia", "sci-fi", "2007", "http://ia.media-imdb.com/images/M/MV5BMTU4NzMyNDk1OV5BMl5BanBnXkFtZTcwOTEwMzU1MQ@@._V1_SX640_SY720_.jpg")');
+                 tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("Titanic", "trama varia", "romantic", "1997", "http://ia.media-imdb.com/images/M/MV5BMjExNzM0NDM0N15BMl5BanBnXkFtZTcwMzkxOTUwNw@@._V1_SY317_CR0,0,214,317_AL_.jpg"');
+                 tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("The Lord of the Rings: The Fellowship of the Ring", "trama varia", fantasy", "2001", "http://ia.media-imdb.com/images/M/MV5BNTEyMjAwMDU1OV5BMl5BanBnXkFtZTcwNDQyNTkxMw@@._V1_SY317_CR1,0,214,317_AL_.jpg"');
     }
 
     // Transaction error callback
