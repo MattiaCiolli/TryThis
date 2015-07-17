@@ -33,7 +33,6 @@ var DetailView = Utils.Page.extend({
 	    },
 	
     render: function() {
-		this.model=JSON.parse(localStorage.getItem("media"));
       $(this.el).html(this.template(this.model.toJSON()));
       return this;
     },

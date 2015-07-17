@@ -62,8 +62,9 @@ require(['backbone', 'utils'], function(Backbone, Utils) {
     function populateDB(tx) {
          tx.executeSql('DROP TABLE IF EXISTS FILM');
          tx.executeSql('CREATE TABLE IF NOT EXISTS FILM (title unique, txt, genre, year, img)');
-         tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("Fast and furious 7", "trama varia", "action", "2014", "http://pad.mymovies.it/filmclub/2013/10/194/locandinapg2.jpg")');
-         tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("Wanted", "trama varia", "action", "2008", "http://www.cinemadelsilenzio.it/images/film/poster/7732_big.jpg")');
+         tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("Fast and furious 7", "trama varia", "action", "2014", "http://ia.media-imdb.com/images/M/MV5BMTQxOTA2NDUzOV5BMl5BanBnXkFtZTgwNzY2MTMxMzE@._V1_SX640_SY720_.jpg")');
+         tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("Wanted", "trama varia", "action", "2008", "http://ia.media-imdb.com/images/M/MV5BMTQwNDM2MTMwMl5BMl5BanBnXkFtZTgwMjE4NjQxMTE@._V1_SX214_AL_.jpg")');
+		 tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("Dumb and dumber", "trama varia", "comedy", "1994", "http://ia.media-imdb.com/images/M/MV5BMTIzNDI5MTc0M15BMl5BanBnXkFtZTYwMjM5NDU5._V1_SX640_SY720_.jpg")');
     }
 
     // Transaction error callback

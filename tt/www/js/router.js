@@ -79,7 +79,7 @@ detail: function() {
 	
       // highlight the nav2 tab bar element as the current one
       this.structureView.setActiveTabBarElement("nav8");
-	var search="Wanted";
+	var search="Dumb and dumber";
 //query to database
 function queryDB(tx) 
 		{
@@ -90,8 +90,8 @@ function queryDB(tx)
 function querySuccess(tx, results) {
 console.log("Returned rows = " + results.rows.length);
 
-	var media=new Media({year:results.rows.item(0).year, title:results.rows.item(0).title, genre:results.rows.item(0).genre, img:results.rows.item(0).img, txt:results.rows.item(0).txt});
-	localStorage.setItem("media",JSON.stringify(media));
+	var m=new Media({year:results.rows.item(0).year, title:results.rows.item(0).title, genre:results.rows.item(0).genre, img:results.rows.item(0).img, txt:results.rows.item(0).txt});
+	localStorage.setItem("media",JSON.stringify(m));
 // this will be true since it was a select statement and so rowsAffected was 0
 if (!results.rowsAffected) {
   console.log('No rows affected!');
@@ -107,7 +107,8 @@ function errorCB(err) {
 //opens database and queries it
 var db = window.openDatabase("Database", "1.0", "Database media", 200000);
 db.transaction(queryDB, errorCB);
-
+var m1=JSON.parse(localStorage.getItem("media"));
+var media=new Media({year:m1.year, title:m1.title, genre:m1.genre, img:m1.img, txt:m1.txt});
 var page = new DetailView({model:media});
       this.changePage(page);
     },
