@@ -94,7 +94,19 @@ require(['backbone', 'utils'], function(Backbone, Utils) {
                  tx.executeSql('INSERT INTO BAND (title , txt, genre, year, img) VALUES ("Frédéric Chopin", "descrizione", "classical", "1810", "http://cps-static.rovicorp.com/3/JPG_400/MI0002/864/MI0002864430.jpg")');
                  tx.executeSql('INSERT INTO BAND (title , txt, genre, year, img) VALUES ("Johnny Cash", "descrizione", "country", "1950", "http://cps-static.rovicorp.com/3/JPG_400/MI0001/413/MI0001413370.jpg")');
                  tx.executeSql('INSERT INTO BAND (title , txt, genre, year, img) VALUES ("Louis Armstrong", "descrizione", "jazz", "1920", "http://cps-static.rovicorp.com/3/JPG_400/MI0001/348/MI0001348918.jpg")');
-                 
+                 tx.executeSql('INSERT INTO BAND (title , txt, genre, year, img) VALUES ("Eminem", "descrizione", "rap", "1990", "http://cps-static.rovicorp.com/3/JPG_400/MI0003/667/MI0003667042.jpg")');
+                 tx.executeSql('INSERT INTO BAND (title , txt, genre, year, img) VALUES ("Snoop Dogg", "descrizione", "rap", "1990", "http://cps-static.rovicorp.com/3/JPG_400/MI0003/277/MI0003277278.jpg")'); //10
+                 tx.executeSql('INSERT INTO BAND (title , txt, genre, year, img) VALUES ("Pink Floyd", "descrizione", "progressive rock", "1965", "http://cps-static.rovicorp.com/3/JPG_400/MI0001/428/MI0001428642.jpg")');
+                 tx.executeSql('INSERT INTO BAND (title , txt, genre, year, img) VALUES ("The Beatles, "descrizione", "beat rock", "1957", "http://cps-static.rovicorp.com/3/JPG_400/MI0003/361/MI0003361571.jpg")');
+                 tx.executeSql('INSERT INTO BAND (title , txt, genre, year, img) VALUES ("Katy Perry", "descrizione", "contemporary pop", "2000", "http://cps-static.rovicorp.com/3/JPG_400/MI0003/611/MI0003611183.jpg")');
+                 tx.executeSql('INSERT INTO BAND (title , txt, genre, year, img) VALUES ("Michael Jackson", "descrizione", "pop", "1964", "http://cps-static.rovicorp.com/3/JPG_400/MI0003/641/MI0003641477.jpg")');
+                 tx.executeSql('INSERT INTO BAND (title , txt, genre, year, img) VALUES ("Bob Marley", "descrizione", "reggae", "1960", "http://cps-static.rovicorp.com/3/JPG_400/MI0003/354/MI0003354196.jpg")'); //15
+                 tx.executeSql('INSERT INTO BAND (title , txt, genre, year, img) VALUES ("Skrillex", "descrizione", "electronic", "2000", "http://cps-static.rovicorp.com/3/JPG_400/MI0003/422/MI0003422187.jpg")');
+                 tx.executeSql('INSERT INTO BAND (title , txt, genre, year, img) VALUES ("Toto", "descrizione", "soft rock", "1977", "http://cps-static.rovicorp.com/3/JPG_400/MI0001/467/MI0001467837.jpg")');
+                 tx.executeSql('INSERT INTO BAND (title , txt, genre, year, img) VALUES ("Nirvana", "descrizione, "grunge", "1987", "http://cps-static.rovicorp.com/3/JPG_400/MI0003/770/MI0003770268.jpg")');
+                 tx.executeSql('INSERT INTO BAND (title , txt, genre, year, img) VALUES ("Enya", "descrizione", "celtic new age", "1983", "http://cps-static.rovicorp.com/3/JPG_400/MI0001/426/MI0001426707.jpg")');
+                 tx.executeSql('INSERT INTO BAND (title , txt, genre, year, img) VALUES ("Bee Gees", "descrizione", "disco", "1958", "http://cps-static.rovicorp.com/3/JPG_400/MI0001/367/MI0001367718.jpg")'); //20
+         /*---------- BOOK TABLE ---------- */          
     }
 
     // Transaction error callback
