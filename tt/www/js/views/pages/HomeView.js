@@ -92,7 +92,7 @@ var HomeView = Utils.Page.extend({
     },
 	 
 	 logout: function(e) {
-		 localStorage.removeItem("user");
+		 sessionStorage.removeItem("user");
       Backbone.history.navigate("login", {
         trigger: true
       });
@@ -109,35 +109,35 @@ var HomeView = Utils.Page.extend({
 	 search: function(e) {
 		 if(e.currentTarget.id=="searchmovies")
 		 {
-		localStorage.setItem("searchelement", "searchmovies");
+		sessionStorage.setItem("searchelement", "searchmovies");
 		Backbone.history.navigate("search", {
         trigger: true
 	      });
 		 }
 		 else if(e.currentTarget.id=="searchgames")
 		 {
-	 localStorage.setItem("searchelement", "searchgames");
+	 sessionStorage.setItem("searchelement", "searchgames");
       Backbone.history.navigate("search", {
         trigger: true
 	      });
 	   }
 		 else if(e.currentTarget.id=="searchbooks")
 		 {
-		localStorage.setItem("searchelement", "searchbooks");
+		sessionStorage.setItem("searchelement", "searchbooks");
       Backbone.history.navigate("search", {
         trigger: true
 	      });
 	   }
 		 else if(e.currentTarget.id=="searchseries")
 		 {
-		localStorage.setItem("searchelement", "searchseries");
+		sessionStorage.setItem("searchelement", "searchseries");
       Backbone.history.navigate("search", {
         trigger: true
 	      });
 	   }
 		 else if(e.currentTarget.id=="searchmusic")
 		 {
-		localStorage.setItem("searchelement", "searchmusic");
+		sessionStorage.setItem("searchelement", "searchmusic");
       Backbone.history.navigate("search", {
         trigger: true
 	      });

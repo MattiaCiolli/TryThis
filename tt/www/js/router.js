@@ -45,15 +45,15 @@ define(function(require) {
       // highlight the nav2 tab bar element as the current one
       this.structureView.setActiveTabBarElement("nav10");
 		
-		if(localStorage.getItem("catID")=="movies")
+		if(sessionStorage.getItem("catID")=="movies")
 		{var t=new Testo({txt:"My Movies"});}
-		else if(localStorage.getItem("catID")=="books")
+		else if(sessionStorage.getItem("catID")=="books")
 		{var t=new Testo({txt:"My Books"});}
-		else if(localStorage.getItem("catID")=="games")
+		else if(sessionStorage.getItem("catID")=="games")
 		{var t=new Testo({txt:"My Games"});}
-		else if(localStorage.getItem("catID")=="series")
+		else if(sessionStorage.getItem("catID")=="series")
 		{var t=new Testo({txt:"My Tv series"});}
-		else if(localStorage.getItem("catID")=="music")
+		else if(sessionStorage.getItem("catID")=="music")
 		{var t=new Testo({txt:"My Music"});}
 		// create the view and show it
       var page = new CategoryView({
@@ -65,7 +65,7 @@ define(function(require) {
 user: function() {
       // highlight the nav2 tab bar element as the current one
       this.structureView.setActiveTabBarElement("nav9");
-		 //var user=localStorage.getItem("user");
+		 //var user=sessionStorage.getItem("user");
 var session=new Session();
       var page = new UserView({ 
          model: session 
@@ -79,36 +79,8 @@ detail: function() {
 	
       // highlight the nav2 tab bar element as the current one
       this.structureView.setActiveTabBarElement("nav8");
-	var search="Dumb and dumber";
-//query to database
-function queryDB(tx) 
-		{
-  tx.executeSql('SELECT * FROM FILM WHERE title="'+ search+ '"', [], querySuccess, errorCB);
-}
-
-//in questo caso fa il log dell'anno del film, si puo usare per popolare template tramite oggetto, basta mettere tutto in querysuccess per lo scope della var
-function querySuccess(tx, results) {
-console.log("Returned rows = " + results.rows.length);
-
-	var m=new Media({year:results.rows.item(0).year, title:results.rows.item(0).title, genre:results.rows.item(0).genre, img:results.rows.item(0).img, txt:results.rows.item(0).txt});
-	localStorage.setItem("media",JSON.stringify(m));
-// this will be true since it was a select statement and so rowsAffected was 0
-if (!results.rowsAffected) {
-  console.log('No rows affected!');
-  return false;
-}
-// for an insert statement, this property will return the ID of the last inserted row
-console.log("Last inserted row ID = " + results.insertId);
-}
-
-function errorCB(err) {
-    alert("Error processing SQL: "+err.code);
-}
-//opens database and queries it
-var db = window.openDatabase("Database", "1.0", "Database media", 200000);
-db.transaction(queryDB, errorCB);
-var m1=JSON.parse(localStorage.getItem("media"));
-var media=new Media({year:m1.year, title:m1.title, genre:m1.genre, img:m1.img, txt:m1.txt});
+	var detail=JSON.parse(sessionStorage.getItem("detail"));
+var media=new Media({year:detail.year, title:detail.title, genre:detail.genre, img:detail.img, txt:detail.txt});
 var page = new DetailView({model:media});
       this.changePage(page);
     },
@@ -140,7 +112,8 @@ var page = new DetailView({model:media});
 	results: function() {
       // highlight the nav1 tab bar element as the current one
       this.structureView.setActiveTabBarElement("nav4");
-      var page = new ResultsView();
+		
+      page = new ResultsView();
       // show the view
       this.changePage(page);
     },	
@@ -178,7 +151,7 @@ var page = new DetailView({model:media});
         this.structureView.trigger("inTheDOM");
       }
       // go to first view
-	  var user=localStorage.getItem("user");
+	  var user=sessionStorage.getItem("user");
 	  console.log(user);
 	  if(user==null)
 	  {
