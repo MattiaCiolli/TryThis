@@ -79,7 +79,7 @@ detail: function() {
 	
       // highlight the nav2 tab bar element as the current one
       this.structureView.setActiveTabBarElement("nav8");
-	var detail=JSON.parse(sessionStorage.getItem("detail"));
+	var detail=JSON.parse(sessionStorage.getItem("details"));
 var media=new Media({year:detail.year, title:detail.title, genre:detail.genre, img:detail.img, txt:detail.txt});
 var page = new DetailView({model:media});
       this.changePage(page);

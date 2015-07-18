@@ -20,7 +20,7 @@ define(function(require) {
    events: {
       "tap #back": "search",
       "tap #home": "home",
-	  "tap" : "detail"
+	  "tap li a" : "detail"
     },
 
     render: function() {
@@ -55,8 +55,10 @@ function errorCB(err) {
 //opens database and queries it
 var db = window.openDatabase("Database", "1.0", "Database media", 200000);
 db.transaction(queryDB, errorCB);
+
 $(this.el).html(this.template());
       return this;
+
     },
 
 	
@@ -67,43 +69,53 @@ $(this.el).html(this.template());
     },
 	
 	detail: function(e) {
-		if(e.currentTarget.id!="back" && e.currentTarget.id!="home")
-		{
-			var search=e.currentTarget.id;
+		var search=e.currentTarget.id;
+		var category=sessionStorage.getItem("searchcat");
 			console.log(search);
 		//query to database
 	function queryDB(tx) 
 		{
-	  tx.executeSql('SELECT * FROM FILM WHERE title="'+ search+ '"', [], querySuccess, errorCB);
+	  tx.executeSql('SELECT * FROM "'+category+'" WHERE title="'+ search+ '"', [], querySuccess, errorCB);
 	}
 
 	//in questo caso fa il log dell'anno del film, si puo usare per popolare template tramite oggetto, basta mettere tutto in querysuccess per lo scope della var
 	function querySuccess(tx, results) {
 	console.log("Returned rows = " + results.rows.length);
-
+	console.log(results.rows.item(0).title);
 	var m=new Media({year:results.rows.item(0).year, title:results.rows.item(0).title, genre:results.rows.item(0).genre, img:results.rows.item(0).img, txt:results.rows.item(0).txt});
-	sessionStorage.setItem("detail",JSON.stringify(m));
-	// this will be true since it was a select statement and so rowsAffected was 0
-	if (!results.rowsAffected) {
-    console.log('No rows affected!');
-    return false;
+	sessionStorage.setItem("details",JSON.stringify(m));
+		
 	}
-	// for an insert statement, this property will return the ID of the last inserted row
-	console.log("Last inserted row ID = " + results.insertId);
-	}
-
+	
 	function errorCB(err) {
     alert("Error processing SQL: "+err.code);
 	}
 	//opens database and queries it
-	var db = window.openDatabase("Database", "1.0", "Database media", 200000);
+	var db = window.openDatabase("Database", "1.0", "Database media", 2000000);
 	db.transaction(queryDB, errorCB);
 		
-      Backbone.history.navigate("detail", {
+	var count=1;
+
+var counter=setInterval(timer, 1000); //1000 will  run it every 1 second
+
+function timer()
+{
+  count=count-1;
+  if (count <= 0)
+  {
+     clearInterval(counter);
+     //counter ended, do something here
+	  Backbone.history.navigate("detail", {
         trigger: true
       });
-		}
-    },
+     return;
+  }
+}
+
+	
+		
+     		},
+    
 	
     search: function(e) {
       Backbone.history.navigate("search", {
