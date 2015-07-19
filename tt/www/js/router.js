@@ -45,15 +45,15 @@ define(function(require) {
       // highlight the nav2 tab bar element as the current one
       this.structureView.setActiveTabBarElement("nav10");
 		
-		if(sessionStorage.getItem("catID")=="movies")
+		if(sessionStorage.getItem("catID")=="FILM")
 		{var t=new Testo({txt:"My Movies"});}
-		else if(sessionStorage.getItem("catID")=="books")
+		else if(sessionStorage.getItem("catID")=="BOOK")
 		{var t=new Testo({txt:"My Books"});}
-		else if(sessionStorage.getItem("catID")=="games")
+		else if(sessionStorage.getItem("catID")=="GAMES")
 		{var t=new Testo({txt:"My Games"});}
-		else if(sessionStorage.getItem("catID")=="series")
+		else if(sessionStorage.getItem("catID")=="SERIES")
 		{var t=new Testo({txt:"My Tv series"});}
-		else if(sessionStorage.getItem("catID")=="music")
+		else if(sessionStorage.getItem("catID")=="BAND")
 		{var t=new Testo({txt:"My Music"});}
 		// create the view and show it
       var page = new CategoryView({

@@ -60,6 +60,12 @@ require(['backbone', 'utils'], function(Backbone, Utils) {
     
 		// Populate the database 
     function populateDB(tx) {
+		/*---------- PREFS TABLE ---------- */ 
+		 tx.executeSql('DROP TABLE IF EXISTS PREFS');
+         tx.executeSql('CREATE TABLE IF NOT EXISTS PREFS (title unique, txt, genre, year, img, category)');
+		 tx.executeSql('INSERT INTO PREFS (title , txt, genre, year, img, category) VALUES ("Fast and furious 7", "trama varia", "action", "2014", "http://ia.media-imdb.com/images/M/MV5BMTQxOTA2NDUzOV5BMl5BanBnXkFtZTgwNzY2MTMxMzE@._V1_SX640_SY720_.jpg", "FILM")');
+        
+		/*---------- FILM TABLE ---------- */ 
          tx.executeSql('DROP TABLE IF EXISTS FILM');
          tx.executeSql('CREATE TABLE IF NOT EXISTS FILM (title unique, txt, genre, year, img)');
          tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("Fast and furious 7", "trama varia", "action", "2014", "http://ia.media-imdb.com/images/M/MV5BMTQxOTA2NDUzOV5BMl5BanBnXkFtZTgwNzY2MTMxMzE@._V1_SX640_SY720_.jpg")');
