@@ -151,6 +151,7 @@ require(['backbone', 'utils'], function(Backbone, Utils) {
                  tx.executeSql('INSERT INTO GAME (title , txt, genre, year, img) VALUES ("Dark_Souls", "Intense action within the dungeons, encounters with terrifying enemies and innovative online features combine for a unique gaming experience.", "role-playing", "2011", "http://thegamesdb.net/banners/boxart/original/front/10273-3.jpg")');
                  tx.executeSql('INSERT INTO GAME (title , txt, genre, year, img) VALUES ("Heavy_Rain", "Experience a gripping psychological crime thriller filled with innumerable twists and turns, where even the smallest actions and choices can cause dramatic consequences.", "adventure", "2010", "http://thegamesdb.net/banners/boxart/original/front/319-1.jpg")'); //20
                  
+                 
     }
 
     // Transaction error callback
