@@ -45,7 +45,7 @@ var DetailView = Utils.Page.extend({
 		{
 	var detail=JSON.parse(sessionStorage.getItem("details"));
 	var category=sessionStorage.getItem("searchcat");
-	tx.executeSql('INSERT INTO PREFS (title , txt, genre, year, img, category) VALUES ("'+detail.title+'", "'+detail.txt+'","'+detail.genre+'", "'+detail.year+'","'+detail.img+'","'+category+'")');
+	tx.executeSql('INSERT INTO PREFS (title , user, txt, genre, year, img, category) VALUES ("'+detail.title+'", "'+localStorage.getItem("user")+'", "'+detail.txt+'","'+detail.genre+'", "'+detail.year+'","'+detail.img+'","'+category+'")');
  }
 
 		function qSuccess(tx, results) {
@@ -66,7 +66,7 @@ function errorCB(err) {
 		 function queryDB(tx) 
 		{
 	var detail=JSON.parse(sessionStorage.getItem("details"));
-	tx.executeSql('DELETE FROM PREFS WHERE title="'+detail.title+'"');
+	tx.executeSql('DELETE FROM PREFS WHERE user="'+localStorage.getItem("user")+'" AND title="'+detail.title+'"');
  }
 
 		function qSuccess(tx, results) {

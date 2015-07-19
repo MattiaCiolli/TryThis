@@ -2,11 +2,11 @@ define(function(require) {
 
   var Backbone = require("backbone");
   var Utils = require("utils");
-  var Session = require("models/Session");
+  var User = require("models/User");
 var UserView = Utils.Page.extend({
 
     constructorName: "UserView",
-	model:Session,
+	model:User,
     id: "user",
 	className: "i-g page", //fondamentale per funzionamento di ratchet
 	  

@@ -28,7 +28,7 @@ var CategoryView = Utils.Page.extend({
 		//query to database
 function queryDB(tx) 
 		{
-  tx.executeSql('SELECT * FROM PREFS WHERE category="'+category+'"', [], qSuccess, errorCB);
+  tx.executeSql('SELECT * FROM PREFS WHERE user="'+localStorage.getItem("user")+'" AND category="'+category+'"', [], qSuccess, errorCB);
 			
 }
 

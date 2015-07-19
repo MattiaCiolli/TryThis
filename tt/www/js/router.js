@@ -13,7 +13,7 @@ define(function(require) {
   var DetailView = require("views/pages/DetailView");
   var UserView = require("views/pages/UserView");
   var CategoryView = require("views/pages/CategoryView");
-  var Session = require("models/Session");
+  var User = require("models/User");
   var Testo = require("models/Testo");
   var Media=require("models/Media");
   var AppRouter = Backbone.Router.extend({
@@ -66,9 +66,9 @@ user: function() {
       // highlight the nav2 tab bar element as the current one
       this.structureView.setActiveTabBarElement("nav9");
 		 //var user=sessionStorage.getItem("user");
-var session=new Session();
+var actualuser=new User({username:localStorage.getItem("user")});
       var page = new UserView({ 
-         model: session 
+         model: actualuser 
        }); 
 
       this.changePage(page);

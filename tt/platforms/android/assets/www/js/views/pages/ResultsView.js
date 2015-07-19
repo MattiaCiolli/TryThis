@@ -29,18 +29,10 @@ define(function(require) {
 		//query to database
 function queryDB(tx) 
 		{
- /* tx.executeSql('SELECT genre FROM "'+ category+ '" WHERE title="'+ search+ '"', [], q1Success, errorCB);
-			var genre=sessionStorage.getItem("genre");*/
-  tx.executeSql('SELECT * FROM "'+ category+ '" WHERE title<>"'+ search+ '" AND genre IN (SELECT genre FROM "'+ category+ '" WHERE title="'+ search+ '")', [], q2Success, errorCB);
+   tx.executeSql('SELECT * FROM "'+ category+ '" WHERE title<>"'+ search+ '" AND genre IN (SELECT genre FROM "'+ category+ '" WHERE title="'+ search+ '")', [], qSuccess, errorCB);
 }
 
-	/*	function q1Success(tx, results) {
-console.log("Returned rows = " + results.rows.length);
-	 console.log(results.rows.item(0).genre);
-            sessionStorage.setItem("genre",results.rows.item(0).genre);
-      }
-*/
-function q2Success(tx, results) {
+function qSuccess(tx, results) {
 console.log("Returned rows = " + results.rows.length);
 	 for (var i=0; i<results.rows.length; i++){
 		 console.log(results.rows.item(i).title);
