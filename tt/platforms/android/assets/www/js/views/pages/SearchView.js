@@ -54,29 +54,35 @@ var SearchView = Utils.Page.extend({
     },
 	
 	 results: function(e) { 
+		 
 		 if(e.currentTarget.id=="searchM")
 		 { 
-			 sessionStorage.setItem("searchitem",this.$el.find("#inputM")[0].value);
+			 var input=this.$el.find("#inputM")[0].value;
+		 	 sessionStorage.setItem("searchitem",input.replace(/ /g,"_"));
 			 sessionStorage.setItem("searchcat","FILM");
 		  }
 		 		 else if(e.currentTarget.id=="searchG")
 		 {
-			  sessionStorage.setItem("searchitem",this.$el.find("#inputG")[0].value);
-			 sessionStorage.setItem("searchcat","GAMES");
+			 var input=this.$el.find("#inputG")[0].value;
+		 	 sessionStorage.setItem("searchitem",input.replace(/ /g,"_"));
+			 sessionStorage.setItem("searchcat","GAME");
 		 }
 		 else if(e.currentTarget.id=="searchB")
 		 {
-			  sessionStorage.setItem("searchitem",this.$el.find("#inputB")[0].value);
+			  var input=this.$el.find("#inputB")[0].value;
+		 	 sessionStorage.setItem("searchitem",input.replace(/ /g,"_"));
 			 sessionStorage.setItem("searchcat","BOOK");
 		 }
 		 else if(e.currentTarget.id=="searchMus")
 		 {
-			  sessionStorage.setItem("searchitem",this.$el.find("#inputMus")[0].value);
+			  var input=this.$el.find("#inputMus")[0].value;
+		 	 sessionStorage.setItem("searchitem",input.replace(/ /g,"_"));
 			 sessionStorage.setItem("searchcat","BAND");
 		 }
 		 else if(e.currentTarget.id=="searchTvs")
 		 {
-			  sessionStorage.setItem("searchitem",this.$el.find("#inputTvs")[0].value);
+			 var input=this.$el.find("#inputTvs")[0].value;
+		 	 sessionStorage.setItem("searchitem",input.replace(/ /g,"_"));
 			 sessionStorage.setItem("searchcat","SERIES");
 		 }
 		 

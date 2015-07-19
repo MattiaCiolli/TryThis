@@ -36,7 +36,7 @@ function qSuccess(tx, results) {
 console.log("Returned rows = " + results.rows.length);
 	 for (var i=0; i<results.rows.length; i++){
 		 console.log(results.rows.item(i).title);
-       $("#a").append('<li class="table-view-cell media"><a style="top:0px" class="navigate-right" id='+results.rows.item(i).title+'><img class="media-object pull-left" src='+results.rows.item(i).img+' width=108 heigth=178 ><div class="media-body"><h4>'+results.rows.item(i).title+'</h4><p>'+results.rows.item(i).genre+'</p></div></a></li>');
+       $("#a").append('<li class="table-view-cell media"><a style="top:0px" class="navigate-right" id='+results.rows.item(i).title+'><img class="media-object pull-left" src='+results.rows.item(i).img+' width=108 heigth=178 ><div class="media-body"><h4>'+results.rows.item(i).title.replace(/_/g," ")+'</h4><p>'+results.rows.item(i).genre+'</p></div></a></li>');
       }
 	 i=0;
 }
@@ -121,6 +121,7 @@ function timer()
   {
      clearInterval(counter);
      //counter ended, do something here
+	  sessionStorage.setItem("prevpage", "result");
 	  Backbone.history.navigate("detail", {
         trigger: true
       });

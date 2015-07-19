@@ -49,7 +49,7 @@ define(function(require) {
 		{var t=new Testo({txt:"My Movies"});}
 		else if(sessionStorage.getItem("catID")=="BOOK")
 		{var t=new Testo({txt:"My Books"});}
-		else if(sessionStorage.getItem("catID")=="GAMES")
+		else if(sessionStorage.getItem("catID")=="GAME")
 		{var t=new Testo({txt:"My Games"});}
 		else if(sessionStorage.getItem("catID")=="SERIES")
 		{var t=new Testo({txt:"My Tv series"});}
@@ -80,7 +80,7 @@ detail: function() {
       // highlight the nav2 tab bar element as the current one
       this.structureView.setActiveTabBarElement("nav8");
 	var detail=JSON.parse(sessionStorage.getItem("details"));
-var media=new Media({year:detail.year, title:detail.title, genre:detail.genre, img:detail.img, txt:detail.txt});
+var media=new Media({year:detail.year, title:detail.title.replace(/_/g," "), genre:detail.genre, img:detail.img, txt:detail.txt});
 var page = new DetailView({model:media});
       this.changePage(page);
     },

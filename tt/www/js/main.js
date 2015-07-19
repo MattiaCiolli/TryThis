@@ -60,6 +60,18 @@ require(['backbone', 'utils'], function(Backbone, Utils) {
     
 		// Populate the database 
     function populateDB(tx) {
+		/*---------- PREFS TABLE ---------- */ 
+		 tx.executeSql('DROP TABLE IF EXISTS USER');
+         tx.executeSql('CREATE TABLE IF NOT EXISTS USER (username unique, pwd, email)');
+		 tx.executeSql('INSERT INTO USER (username, pwd, email) VALUES ("user1", "pw1", "user1@gmail.com")');
+		 tx.executeSql('INSERT INTO USER (username, pwd, email) VALUES ("user2", "pw2", "user2@gmail.com")');
+        
+		/*---------- PREFS TABLE ---------- */ 
+		 tx.executeSql('DROP TABLE IF EXISTS PREFS');
+         tx.executeSql('CREATE TABLE IF NOT EXISTS PREFS (title unique, user, txt, genre, year, img, category)');
+		 tx.executeSql('INSERT INTO PREFS (title , user, txt, genre, year, img, category) VALUES ("Fast_and_furious_7", "user1", "trama varia", "action", "2014", "http://ia.media-imdb.com/images/M/MV5BMTQxOTA2NDUzOV5BMl5BanBnXkFtZTgwNzY2MTMxMzE@._V1_SX640_SY720_.jpg", "FILM")');
+         tx.executeSql('INSERT INTO PREFS (title , user, txt, genre, year, img, category) VALUES ("Wanted", "user2", "trama varia", "action", "2008", "http://ia.media-imdb.com/images/M/MV5BMTQwNDM2MTMwMl5BMl5BanBnXkFtZTgwMjE4NjQxMTE@._V1_SX214_AL_.jpg", "FILM")');
+        /*---------- FILM TABLE ---------- */ 
          tx.executeSql('DROP TABLE IF EXISTS FILM');
          tx.executeSql('CREATE TABLE IF NOT EXISTS FILM (title unique, txt, genre, year, img)');
          tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("Fast_and_furious_7", "trama varia", "action", "2014", "http://ia.media-imdb.com/images/M/MV5BMTQxOTA2NDUzOV5BMl5BanBnXkFtZTgwNzY2MTMxMzE@._V1_SX640_SY720_.jpg")');
@@ -82,9 +94,10 @@ require(['backbone', 'utils'], function(Backbone, Utils) {
                  tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("Forrest_Gump", "Forrest Gump, while not intelligent, has accidentally been present at many historic moments, but his true love, Jenny Curran, eludes him.", "drama", "1994", "http://ia.media-imdb.com/images/M/MV5BMTQwMTA5MzI1MF5BMl5BanBnXkFtZTcwMzY5Mzg3OA@@._V1_SX214_AL_.jpg")');
                  tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("The_Bourne_Identity", "A man is picked up by a fishing boat, bullet-riddled and suffering from amnesia, before racing to elude assassins and regain his memory.", "action", "2002", "http://ia.media-imdb.com/images/M/MV5BMTQ3MDA4MDIyN15BMl5BanBnXkFtZTYwOTg0Njk4._V1_SX214_AL_.jpg")');
                  tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("The_Chronicles_of_Narnia:_The_Voyage_of_the_Dawn_Treader", "Lucy and Edmund Pevensie return to Narnia with their cousin Eustace where they meet up with Prince Caspian for a trip across the sea aboard the royal ship The Dawn Treader.", "fantasy", "2010", "http://ia.media-imdb.com/images/M/MV5BNjQ2MDQzMzExNl5BMl5BanBnXkFtZTcwMTYzOTc5Mw@@._V1_SX214_AL_.jpg")'); //20
-         tx.executeSql('DROP TABLE IF EXISTS BAND');
+        /*---------- BAND TABLE ---------- */  
+		tx.executeSql('DROP TABLE IF EXISTS BAND');
          tx.executeSql('CREATE TABLE IF NOT EXISTS BAND (title unique, txt, genre, year, img)');
-                 tx.executeSql('INSERT INTO BAND (title , txt, genre, year, img) VALUES ("Coldplay", "Passionate, heart-rending British pop group whose sweet melodies and swooning lyrics made them one of the biggest bands of the new millennium. ", "rock", "1997", "hhttp://cps-static.rovicorp.com/3/JPG_400/MI0003/273/MI0003273645.jpg")');
+                 tx.executeSql('INSERT INTO BAND (title , txt, genre, year, img) VALUES ("Coldplay", "Passionate, heart-rending British pop group whose sweet melodies and swooning lyrics made them one of the biggest bands of the new millennium. ", "rock", "1997", "http://cps-static.rovicorp.com/3/JPG_400/MI0003/273/MI0003273645.jpg")');
                  tx.executeSql('INSERT INTO BAND (title , txt, genre, year, img) VALUES ("Muse", "Respected British alternative band that combined progressive rock, glam, electronica, and Radiohead-influenced experimentation.", "rock", "1997", "http://cps-static.rovicorp.com/3/JPG_400/MI0003/776/MI0003776372.jpg")');
                  tx.executeSql('INSERT INTO BAND (title , txt, genre, year, img) VALUES ("Metallica", "The most consistently innovative metal band of the 1980s and \'90s, reinvigorating the music with a fast, fierce, and surprisingly melodic sound.", "metal", "1981", "http://cps-static.rovicorp.com/3/JPG_400/MI0003/776/MI0003776258.jpg")');
                  tx.executeSql('INSERT INTO BAND (title , txt, genre, year, img) VALUES ("System_of_a_Down", "Chart-topping but challenging alt-metal band that incorporates programmed beats and subtle Eastern European influences.", "metal", "1995", "http://cps-static.rovicorp.com/3/JPG_400/MI0003/534/MI0003534134.jpg")');
@@ -136,7 +149,7 @@ require(['backbone', 'utils'], function(Backbone, Utils) {
                  tx.executeSql('INSERT INTO GAME (title , txt, genre, year, img) VALUES ("The_Elder_Scrolls_V:_Skyrim", "The Empire of Tamriel is on the edge. The High King of Skyrim has been murdered. Alliances form as claims to the throne are made. In the midst of this conflict, a far more dangerous, ancient evil is awakened.", "role-playing", "2011", "http://thegamesdb.net/banners/boxart/original/front/8909-1.jpg")');
                  tx.executeSql('INSERT INTO GAME (title , txt, genre, year, img) VALUES ("Gran_Turismo_5_Prologue", "Gran Turismo 5 Prologue delivers the ultimate racing experience, complete with an all-new interior dash view, drifting and white-knuckle online racing.", "racing", "2008", "http://thegamesdb.net/banners/boxart/original/front/15780-1.jpg")'); //5
                  tx.executeSql('INSERT INTO GAME (title , txt, genre, year, img) VALUES ("Final_Fantasy_XIII", "Released in 2009 in Japan and North America and PAL regions in March 2010, it is the thirteenth major installment in the Final Fantasy series.", "role-playing", "2010", "http://thegamesdb.net/banners/boxart/original/front/21-1.jpg")');
-                 tx.executeSql('INSERT INTO GAME (title , txt, genre, year, img) VALUES ("Little_Big_Planet_3", "PlayStation\'s most imaginative franchise, LittleBigPlanet™, is back with a new cast of playable plush characters in the biggest handcrafted adventure yet!", "platform", "2014", "http://thegamesdb.net/banners/boxart/original/front/22353-1.jpg")');
+                 tx.executeSql('INSERT INTO GAME (title , txt, genre, year, img) VALUES ("Little_Big_Planet_3", "PlayStation\'s most imaginative franchise, LittleBigPlanetï¿½, is back with a new cast of playable plush characters in the biggest handcrafted adventure yet!", "platform", "2014", "http://thegamesdb.net/banners/boxart/original/front/22353-1.jpg")');
                  tx.executeSql('INSERT INTO GAME (title , txt, genre, year, img) VALUES ("God_of_War:_Ascension", "The game is the seventh release in the series, and reveals the details of Kratos\' initial betrayal by Ares while human, and the source of his rage.", "action", "2013", "http://thegamesdb.net/banners/boxart/original/front/13359-1.jpg")');
                  tx.executeSql('INSERT INTO GAME (title , txt, genre, year, img) VALUES ("LIMBO", "LIMBO, a black and white puzzle-platforming adventure, puts players in the role of a young boy traveling through an eerie and treacherous world in an attempt to discover the fate of his sister.", "platform", "2011", "http://thegamesdb.net/banners/boxart/original/front/13364-1.jpg")');
                  tx.executeSql('INSERT INTO GAME (title , txt, genre, year, img) VALUES ("Ratchet_&_Clank:_Tools_of_Destruction", "After saving countless planets from dreadful doom and earning intergalactic mega-celebrity status in the process, Ratchet and Clank have taken some well-deserved RandR -- again.", "platform", "2012", "http://thegamesdb.net/banners/boxart/original/front/16299-1.jpg")'); //10

@@ -50,9 +50,18 @@ var DetailView = Utils.Page.extend({
 
 		function qSuccess(tx, results) {
 alert("Inserted in preferences");
-			 Backbone.history.navigate("results", {
+			 if(sessionStorage.getItem("prevpage")== "category")
+		 {
+     	 Backbone.history.navigate("category", {
         trigger: true
-      });
+      	});
+		 }
+		 else if(sessionStorage.getItem("prevpage")== "result")
+		 {
+			 Backbone.history.navigate("results", {
+        	trigger: true
+      	});
+		 }
       }
 
 function errorCB(err) {
@@ -71,9 +80,18 @@ function errorCB(err) {
 
 		function qSuccess(tx, results) {
 alert("Deleted from preferences");
-			 Backbone.history.navigate("results", {
+			 if(sessionStorage.getItem("prevpage")== "category")
+		 {
+     	 Backbone.history.navigate("category", {
         trigger: true
-      });
+      	});
+		 }
+		 else if(sessionStorage.getItem("prevpage")== "result")
+		 {
+			 Backbone.history.navigate("results", {
+        	trigger: true
+      	});
+		 }
       }
 
 function errorCB(err) {
@@ -81,10 +99,20 @@ function errorCB(err) {
 }
 },
 	
-	 back: function(e) {
-      Backbone.history.navigate("results", {
+	 back: function(e) { 
+		 
+		 if(sessionStorage.getItem("prevpage")== "category")
+		 {
+     	 Backbone.history.navigate("category", {
         trigger: true
-      });
+      	});
+		 }
+		 else if(sessionStorage.getItem("prevpage")== "result")
+		 {
+			 Backbone.history.navigate("results", {
+        	trigger: true
+      	});
+		 }
 		 
     },
 	 

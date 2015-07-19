@@ -30,7 +30,8 @@ var UserView = Utils.Page.extend({
       "tap #books": "category",
 	  "tap #series": "category",
 	  "tap #games": "category",
-	  "tap #music": "category",
+	  "tap #music": "category"
+	 
     },
 	
     render: function() {
@@ -49,6 +50,7 @@ var UserView = Utils.Page.extend({
 		 if(e.currentTarget.id=="movies")
 		 {
 			 sessionStorage.setItem("catID", "FILM");
+			
       Backbone.history.navigate("category", {
         trigger: true
       });
@@ -56,13 +58,15 @@ var UserView = Utils.Page.extend({
 		 if(e.currentTarget.id=="music")
 		 {
 			 sessionStorage.setItem("catID", "BAND");
+			 
       Backbone.history.navigate("category", {
         trigger: true
       });
     }
 		 if(e.currentTarget.id=="games")
 		 {
-			 sessionStorage.setItem("catID", "GAMES");
+			 sessionStorage.setItem("catID", "GAME");
+			
       Backbone.history.navigate("category", {
         trigger: true
       });
@@ -70,6 +74,7 @@ var UserView = Utils.Page.extend({
 		 if(e.currentTarget.id=="books")
 		 {
 			 sessionStorage.setItem("catID", "BOOK");
+			 
       Backbone.history.navigate("category", {
         trigger: true
       });
@@ -77,6 +82,7 @@ var UserView = Utils.Page.extend({
 		 if(e.currentTarget.id=="series")
 		 {
 			 sessionStorage.setItem("catID", "SERIES");
+			 
       Backbone.history.navigate("category", {
         trigger: true
       });
