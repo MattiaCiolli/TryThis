@@ -60,6 +60,19 @@ require(['backbone', 'utils'], function(Backbone, Utils) {
     
 		// Populate the database 
     function populateDB(tx) {
+		/*---------- PREFS TABLE ---------- */ 
+		 tx.executeSql('DROP TABLE IF EXISTS USER');
+         tx.executeSql('CREATE TABLE IF NOT EXISTS USER (username unique, pwd, email)');
+		 tx.executeSql('INSERT INTO USER (username, pwd, email) VALUES ("user1", "pw1", "user1@gmail.com")');
+		 tx.executeSql('INSERT INTO USER (username, pwd, email) VALUES ("user2", "pw2", "user2@gmail.com")');
+        
+		/*---------- PREFS TABLE ---------- */ 
+		 tx.executeSql('DROP TABLE IF EXISTS PREFS');
+         tx.executeSql('CREATE TABLE IF NOT EXISTS PREFS (title unique, user, txt, genre, year, img, category)');
+		 tx.executeSql('INSERT INTO PREFS (title , user, txt, genre, year, img, category) VALUES ("Fast and furious 7", "user1", "trama varia", "action", "2014", "http://ia.media-imdb.com/images/M/MV5BMTQxOTA2NDUzOV5BMl5BanBnXkFtZTgwNzY2MTMxMzE@._V1_SX640_SY720_.jpg", "FILM")');
+         tx.executeSql('INSERT INTO PREFS (title , user, txt, genre, year, img, category) VALUES ("Wanted", "user2", "trama varia", "action", "2008", "http://ia.media-imdb.com/images/M/MV5BMTQwNDM2MTMwMl5BMl5BanBnXkFtZTgwMjE4NjQxMTE@._V1_SX214_AL_.jpg", "FILM")');
+        
+		/*---------- FILM TABLE ---------- */ 
          tx.executeSql('DROP TABLE IF EXISTS FILM');
          tx.executeSql('CREATE TABLE IF NOT EXISTS FILM (title unique, txt, genre, year, img)');
          tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("Fast and furious 7", "trama varia", "action", "2014", "http://ia.media-imdb.com/images/M/MV5BMTQxOTA2NDUzOV5BMl5BanBnXkFtZTgwNzY2MTMxMzE@._V1_SX640_SY720_.jpg")');

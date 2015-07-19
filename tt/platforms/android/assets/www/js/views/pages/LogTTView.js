@@ -36,37 +36,28 @@ var LogTTView = Utils.Page.extend({
     },
 	
 	 login: function(e) {
-    var actualuser= this.$el.find("#username")[0].value;
+    var user= this.$el.find("#username")[0].value;
     var pword = this.$el.find("#password")[0].value;
-	var tempu=JSON.parse(localStorage.getItem(actualuser));
-		 
-		 if(tempu==null)
-		 {
-		 	alert("Wrong password or username");
-			 //Necessario per ricaricare la pagina
-			 Backbone.history.navigate("login", {
-        	trigger: true
-      		});
-			 Backbone.history.navigate("loginTT", {
-        	trigger: true
-      		});
-		 }
-		 
-		 else if(tempu!=null)
-		 {
-		 if(tempu["pwd"]==pword)
-		 {
-			 localStorage.setItem("user", actualuser);
-			alert("Welcome "+actualuser+"!");
-    		//Backbone.sync("read",models);
-		 
+	 var db = window.openDatabase("Database", "1.0", "Database media", 200000);
+		db.transaction(queryDB, errorCB, qSuccess);
+		 function queryDB(tx) 
+		{
+		 tx.executeSql('SELECT * FROM USER WHERE username="'+user+'"', [], qSuccess, errorCB);
+ }
+
+		function qSuccess(tx, results) {
+			if(results.rows.item(0).pwd==pword)
+			{
+				localStorage.setItem("user", user);
+				alert("Welcome "+user+"!");
 			 Backbone.history.navigate("home", {
-        	trigger: true
-			 });
-		 }
-		 else if(tempu["pwd"]!=pword)
-		 {
-			 alert("Wrong password or username");
+        trigger: true
+      });
+			}
+		
+		else if(results.rows.item(0).pwd!=pword)
+			{
+				alert("Wrong username or password");
 			 //Necessario per ricaricare la pagina
 			 Backbone.history.navigate("login", {
         	trigger: true
@@ -75,7 +66,20 @@ var LogTTView = Utils.Page.extend({
         	trigger: true
       		});
 		 }
-		 }
+      }
+
+function errorCB(err) {
+    alert("Error processing SQL: "+err.message);
+	alert("Unexisting user: "+user);
+	 Backbone.history.navigate("login", {
+        	trigger: true
+      		});
+			 Backbone.history.navigate("loginTT", {
+        	trigger: true
+      		});
+}
+		 
+		 
   },
 
 	 

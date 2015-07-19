@@ -28,6 +28,7 @@ var DetailView = Utils.Page.extend({
 
 	events: {
       "tap #add": "add",
+		"tap #remove": "del",
       "tap #back": "back",
 	  "tap #home": "home"
 	    },
@@ -37,10 +38,54 @@ var DetailView = Utils.Page.extend({
       return this;
     },
 	
+	 add: function(e) {
+		 var db = window.openDatabase("Database", "1.0", "Database media", 200000);
+		db.transaction(queryDB, errorCB, qSuccess);
+		 function queryDB(tx) 
+		{
+	var detail=JSON.parse(sessionStorage.getItem("details"));
+	var category=sessionStorage.getItem("searchcat");
+	tx.executeSql('INSERT INTO PREFS (title , user, txt, genre, year, img, category) VALUES ("'+detail.title+'", "'+localStorage.getItem("user")+'", "'+detail.txt+'","'+detail.genre+'", "'+detail.year+'","'+detail.img+'","'+category+'")');
+ }
+
+		function qSuccess(tx, results) {
+alert("Inserted in preferences");
+			 Backbone.history.navigate("results", {
+        trigger: true
+      });
+      }
+
+function errorCB(err) {
+    alert("Error processing SQL: "+err.message);
+}
+},
+	 
+	  del: function(e) {
+     var db = window.openDatabase("Database", "1.0", "Database media", 200000);
+		db.transaction(queryDB, errorCB, qSuccess);
+		 function queryDB(tx) 
+		{
+	var detail=JSON.parse(sessionStorage.getItem("details"));
+	tx.executeSql('DELETE FROM PREFS WHERE user="'+localStorage.getItem("user")+'" AND title="'+detail.title+'"');
+ }
+
+		function qSuccess(tx, results) {
+alert("Deleted from preferences");
+			 Backbone.history.navigate("results", {
+        trigger: true
+      });
+      }
+
+function errorCB(err) {
+    alert("Error processing SQL: "+err.message);
+}
+},
+	
 	 back: function(e) {
       Backbone.history.navigate("results", {
         trigger: true
       });
+		 
     },
 	 
 	 home: function(e) {
