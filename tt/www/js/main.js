@@ -60,19 +60,6 @@ require(['backbone', 'utils'], function(Backbone, Utils) {
     
 		// Populate the database 
     function populateDB(tx) {
-		/*---------- PREFS TABLE ---------- */ 
-		 tx.executeSql('DROP TABLE IF EXISTS USER');
-         tx.executeSql('CREATE TABLE IF NOT EXISTS USER (username unique, pwd, email)');
-		 tx.executeSql('INSERT INTO USER (username, pwd, email) VALUES ("user1", "pw1", "user1@gmail.com")');
-		 tx.executeSql('INSERT INTO USER (username, pwd, email) VALUES ("user2", "pw2", "user2@gmail.com")');
-        
-		/*---------- PREFS TABLE ---------- */ 
-		 tx.executeSql('DROP TABLE IF EXISTS PREFS');
-         tx.executeSql('CREATE TABLE IF NOT EXISTS PREFS (title unique, user, txt, genre, year, img, category)');
-		 tx.executeSql('INSERT INTO PREFS (title , user, txt, genre, year, img, category) VALUES ("Fast and furious 7", "user1", "trama varia", "action", "2014", "http://ia.media-imdb.com/images/M/MV5BMTQxOTA2NDUzOV5BMl5BanBnXkFtZTgwNzY2MTMxMzE@._V1_SX640_SY720_.jpg", "FILM")');
-         tx.executeSql('INSERT INTO PREFS (title , user, txt, genre, year, img, category) VALUES ("Wanted", "user2", "trama varia", "action", "2008", "http://ia.media-imdb.com/images/M/MV5BMTQwNDM2MTMwMl5BMl5BanBnXkFtZTgwMjE4NjQxMTE@._V1_SX214_AL_.jpg", "FILM")');
-        
-		/*---------- FILM TABLE ---------- */ 
          tx.executeSql('DROP TABLE IF EXISTS FILM');
          tx.executeSql('CREATE TABLE IF NOT EXISTS FILM (title unique, txt, genre, year, img)');
          tx.executeSql('INSERT INTO FILM (title , txt, genre, year, img) VALUES ("Fast_and_furious_7", "trama varia", "action", "2014", "http://ia.media-imdb.com/images/M/MV5BMTQxOTA2NDUzOV5BMl5BanBnXkFtZTgwNzY2MTMxMzE@._V1_SX640_SY720_.jpg")');
@@ -162,7 +149,7 @@ require(['backbone', 'utils'], function(Backbone, Utils) {
                  tx.executeSql('INSERT INTO GAME (title , txt, genre, year, img) VALUES ("Battlefield_4", "Battlefield 4 puts you in the boots of US Marine Sgt. Daniel Recker, member of the Tombstone squad. Against the backdrop of a global conflict between US, Russia and China, you\'ll engage in combat on foot and by operating land, sea and air units.", "action", "2013", "http://thegamesdb.net/banners/boxart/original/front/18162-1.jpg")');
                  tx.executeSql('INSERT INTO GAME (title , txt, genre, year, img) VALUES ("Kingdom_Hearts_HD_1.5_ReMIX", "Kingdom Hearts HD 1.5 ReMIX includes Kingdom Hearts: Final Mix, Kingdom Hearts: RE: Chain of Memories and Kingdom Hearts: 358/2 Days", "action", "2013", "http://thegamesdb.net/banners/boxart/original/front/15745-1.jpg")');
                  tx.executeSql('INSERT INTO GAME (title , txt, genre, year, img) VALUES ("Dark_Souls", "Intense action within the dungeons, encounters with terrifying enemies and innovative online features combine for a unique gaming experience.", "role-playing", "2011", "http://thegamesdb.net/banners/boxart/original/front/10273-3.jpg")');
-                 tx.executeSql('INSERT INTO GAME (title , txt, genre, year, img) VALUES ("Heavy_Rain", "Experience a gripping psychological crime thriller filled with innumerable twists and turns, where even the smallest actions and choices can cause dramatic consequences.", "adventure", "2010", "http://thegamesdb.net/banners/boxart/original/front/319-1.jpg")');
+                 tx.executeSql('INSERT INTO GAME (title , txt, genre, year, img) VALUES ("Heavy_Rain", "Experience a gripping psychological crime thriller filled with innumerable twists and turns, where even the smallest actions and choices can cause dramatic consequences.", "adventure", "2010", "http://thegamesdb.net/banners/boxart/original/front/319-1.jpg")'); //20
                  
     }
 
