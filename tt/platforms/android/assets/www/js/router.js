@@ -16,6 +16,7 @@ define(function(require) {
   var User = require("models/User");
   var Testo = require("models/Testo");
   var Media=require("models/Media");
+  var DB=require("models/DB");
   var AppRouter = Backbone.Router.extend({
 
 	  
@@ -38,14 +39,14 @@ define(function(require) {
     },
 	
 	initialize: function(options) {
+		
+		var dbase=new DB();
+		dbase.CreateDB();
       this.currentView = undefined;
     },
 
 	category: function() {
-      // highlight the nav2 tab bar element as the current one
-      this.structureView.setActiveTabBarElement("nav10");
-		
-		if(sessionStorage.getItem("catID")=="FILM")
+     	if(sessionStorage.getItem("catID")=="FILM")
 		{var t=new Testo({txt:"My Movies"});}
 		else if(sessionStorage.getItem("catID")=="BOOK")
 		{var t=new Testo({txt:"My Books"});}
@@ -63,9 +64,7 @@ define(function(require) {
     },
 	
 user: function() {
-      // highlight the nav2 tab bar element as the current one
-      this.structureView.setActiveTabBarElement("nav9");
-		 //var user=sessionStorage.getItem("user");
+     
 var actualuser=new User({username:localStorage.getItem("user")});
       var page = new UserView({ 
          model: actualuser 
@@ -77,8 +76,7 @@ var actualuser=new User({username:localStorage.getItem("user")});
 
 detail: function() {
 	
-      // highlight the nav2 tab bar element as the current one
-      this.structureView.setActiveTabBarElement("nav8");
+     
 	var detail=JSON.parse(sessionStorage.getItem("details"));
 var media=new Media({year:detail.year, title:detail.title.replace(/_/g," "), genre:detail.genre, img:detail.img, txt:detail.txt});
 var page = new DetailView({model:media});
@@ -86,57 +84,49 @@ var page = new DetailView({model:media});
     },
 	
 	about: function() {
-      // highlight the nav2 tab bar element as the current one
-      this.structureView.setActiveTabBarElement("nav7");
+     
 		// create the view and show it
       var page = new AboutView();
       this.changePage(page);
     },
 	
     loginTT: function() {
-      // highlight the nav2 tab bar element as the current one
-      this.structureView.setActiveTabBarElement("nav6");
+     
 		// create the view and show it
       var page = new LogTTView();
       this.changePage(page);
     },
 	
 	signin: function() {
-      // highlight the nav2 tab bar element as the current one
-      this.structureView.setActiveTabBarElement("nav5");
+      
 		// create the view and show it
       var page = new SignView();
       this.changePage(page);
     },
 	
 	results: function() {
-      // highlight the nav1 tab bar element as the current one
-      this.structureView.setActiveTabBarElement("nav4");
-		
+     
       page = new ResultsView();
       // show the view
       this.changePage(page);
     },	
 
     search: function() {
-      // highlight the nav2 tab bar element as the current one
-      this.structureView.setActiveTabBarElement("nav3");
+      
 		// create the view and show it
       var page = new SearchView();
       this.changePage(page);
     },
 	
 	home: function() {
-      // highlight the nav2 tab bar element as the current one
-      this.structureView.setActiveTabBarElement("nav2");
+      
 		// create the view and show it
       var page = new HomeView();
       this.changePage(page);
     },
 	
 	login: function() {
-      // highlight the nav2 tab bar element as the current one
-      this.structureView.setActiveTabBarElement("nav1");
+     
 		// create the view and show it
       var page = new LogView();
       this.changePage(page);
@@ -151,14 +141,16 @@ var page = new DetailView({model:media});
         this.structureView.trigger("inTheDOM");
       }
       // go to first view
-	  var user=sessionStorage.getItem("user");
+	  var user=localStorage.getItem("user");
 	  console.log(user);
 	  if(user==null)
 	  {
 		  var firstView= "login";
 	  }
 	  else
-	  {var firstView="home";}
+	  {
+		  var firstView="home";
+	  }
       this.navigate(firstView, {trigger: true});
     },
 
