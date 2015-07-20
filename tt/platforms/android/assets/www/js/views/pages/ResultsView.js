@@ -59,7 +59,13 @@ function queryDB(tx)
 }
 
 function qSuccess(tx, results) {
-console.log("Returned rows = " + results.rows.length);
+if(results.rows.length==0)
+{
+	alert("No results");
+	 Backbone.history.navigate("search", {
+        trigger: true
+      });
+}
 	 for (var i=0; i<results.rows.length; i++){
 		 console.log(results.rows.item(i).title);
        $("#a").append('<li class="table-view-cell media"><a style="top:0px" class="navigate-right" id='+results.rows.item(i).title+'><img class="media-object pull-left" src='+results.rows.item(i).img+' width=108 heigth=178 ><div class="media-body"><h4>'+results.rows.item(i).title.replace(/_/g," ")+'</h4><p>'+results.rows.item(i).genre+'</p></div></a></li>');
@@ -68,7 +74,7 @@ console.log("Returned rows = " + results.rows.length);
 }
 
 function errorCB(err) {
-    alert("Error processing SQL: "+err.code);
+   console.log("Error processing SQL: "+err.code);
 }
 //opens database and queries it
 var db = window.openDatabase("Database", "1.0", "Database media", 200000);
@@ -80,30 +86,6 @@ $(this.el).html(this.template());
 
     },
 
-	reload:function(e) {var count=1;
-
-var counter=setInterval(timer, 500); //1000 will  run it every 1 second
-
-function timer()
-{
-  count=count-1;
-  if (count <= 0)
-  {
-     clearInterval(counter);
-     //counter ended, do something here
-	  Backbone.history.navigate("home", {
-        trigger: true
-      });
-	  Backbone.history.navigate("results", {
-        trigger: true
-      });
-     return;
-  }
-}
-	},
-	
-	
-	
 	home: function(e) {
       Backbone.history.navigate("home", {
         trigger: true
@@ -120,10 +102,8 @@ function timer()
 	  tx.executeSql('SELECT * FROM "'+category+'" WHERE title="'+ search+ '"', [], querySuccess, errorCB);
 	}
 
-	//in questo caso fa il log dell'anno del film, si puo usare per popolare template tramite oggetto, basta mettere tutto in querysuccess per lo scope della var
+	//stores the result to load it in............
 	function querySuccess(tx, results) {
-	console.log("Returned rows = " + results.rows.length);
-	console.log(results.rows.item(0).title);
 	var m=new Media({year:results.rows.item(0).year, title:results.rows.item(0).title, genre:results.rows.item(0).genre, img:results.rows.item(0).img, txt:results.rows.item(0).txt});
 	sessionStorage.setItem("details",JSON.stringify(m));
 		
@@ -138,7 +118,7 @@ function timer()
 		
 	var count=1;
 
-var counter=setInterval(timer, 1000); //1000 will  run it every 1 second
+var counter=setInterval(timer, 500); //1000 will  run it every 1 second
 
 function timer()
 {

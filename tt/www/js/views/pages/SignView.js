@@ -48,36 +48,48 @@ var SignView = Utils.Page.extend({
 		 var pwd=this.$el.find("#password")[0].value;
 		 var email=this.$el.find("#email")[0].value;
 		  var db = window.openDatabase("Database", "1.0", "Database media", 200000);
-		db.transaction(queryDB);
-		 function queryDB(tx) 
+		db.transaction(queryDB1);
+		 function queryDB1(tx) 
 		{
-			//tx.executeSql('SELECT * FROM USER WHERE username="'+username+'"', [], qSuccess, errorCB);
-			tx.executeSql('INSERT INTO USER (username, pwd, email) VALUES ("'+username+'", "'+pwd+'", "'+email+'")');
+			tx.executeSql('SELECT * FROM USER WHERE username="'+username+'"', [], q1Success, errorCB);
+		}
+		
+		function q1Success(tx, results) {
+			if(results.rows.length==0)
+		{
+			alert("Created: "+username);
 		}
 
-		/*function qSuccess(tx, results) {
-		alert(username+" already exists");
-			 Backbone.history.navigate("home", {
+			if(results.rows.length!=0)
+		{
+					
+			Backbone.history.navigate("logTT", {
         trigger: true
       });
 			Backbone.history.navigate("signin", {
         trigger: true
       });
+			
+			alert(username+" already exists");
+		}
+			
       }
-
-function errorCB(err) {
-    alert("Error processing SQL: "+err.message);
-}
-	 var u = new User({username: this.$el.find("#username")[0].value, pwd:this.$el.find("#password")[0].value, email:this.$el.find("#email")[0].value});
-		 //u.save();
-
-		localStorage.setItem(u.get("username"), JSON.stringify(u));
-		 localStorage.setItem("user", u.get("username"));
-		 
-	    alert("Created " + u.get("username") + " and a password of " + u.get("pwd")+" "+ u.get("email"));*/
-		localStorage.setItem("user", username);
-		 alert("Created: "+username);
 		
+		
+		 db.transaction(queryDB);
+		 function queryDB(tx) 
+		{
+			
+			tx.executeSql('INSERT INTO USER (username, pwd, email) VALUES ("'+username+'", "'+pwd+'", "'+email+'")');
+		}
+
+		
+function errorCB(err) {
+    console.log("Error processing SQL: "+err.message);
+}
+	 
+	    
+		localStorage.setItem("user", username);
 		 Backbone.history.navigate("home", {
         trigger: true
       });
