@@ -36,9 +36,12 @@ var LogTTView = Utils.Page.extend({
     },
 	
 	 login: function(e) {
+	//gets form's values
     var user= this.$el.find("#username")[0].value;
     var pword = this.$el.find("#password")[0].value;
 	 var db = window.openDatabase("Database", "1.0", "Database media", 200000);
+		 
+		 //verify if user exists
 		db.transaction(queryDB, errorCB, qSuccess);
 		 function queryDB(tx) 
 		{
@@ -50,15 +53,15 @@ var LogTTView = Utils.Page.extend({
 			{
 				localStorage.setItem("user", user);
 				alert("Welcome "+user+"!");
-			 Backbone.history.navigate("home", {
-        trigger: true
-      });
+			 	Backbone.history.navigate("home", {
+        		trigger: true
+      			});
 			}
 		
 		else if(results.rows.item(0).pwd!=pword)
 			{
 				alert("Wrong username or password");
-			 //Necessario per ricaricare la pagina
+			 //reload page
 			 Backbone.history.navigate("login", {
         	trigger: true
       		});
@@ -68,10 +71,11 @@ var LogTTView = Utils.Page.extend({
 		 }
       }
 
-function errorCB(err) {
-    alert("Error processing SQL: "+err.message);
-	alert("Unexisting user: "+user);
-	 Backbone.history.navigate("login", {
+		function errorCB(err) {
+    	console.log("Error processing SQL: "+err.message);
+		alert("Unexisting user: "+user);
+			//reload page
+			 Backbone.history.navigate("login", {
         	trigger: true
       		});
 			 Backbone.history.navigate("loginTT", {

@@ -50,37 +50,40 @@ define(function(require) {
 var target = this.$el.find(".media-object");
 var spinner = new Spinner(opts).spin(target);
 		
+		//gets item and category to search
 		var search=sessionStorage.getItem("searchitem");
 		var category=sessionStorage.getItem("searchcat");
 		//query to database
-function queryDB(tx) 
+		function queryDB(tx) 
 		{
-   tx.executeSql('SELECT * FROM "'+ category+ '" WHERE title<>"'+ search+ '" AND genre IN (SELECT genre FROM "'+ category+ '" WHERE title="'+ search+ '")', [], qSuccess, errorCB);
-}
+   			tx.executeSql('SELECT * FROM "'+ category+ '" WHERE title<>"'+ search+ '" AND genre IN (SELECT genre FROM "'+ category+ '" WHERE title="'+ search+ '")', [], qSuccess, errorCB);
+		}
 
-function qSuccess(tx, results) {
-if(results.rows.length==0)
-{
-	alert("No results");
-	 Backbone.history.navigate("search", {
-        trigger: true
-      });
-}
-	 for (var i=0; i<results.rows.length; i++){
+		function qSuccess(tx, results) {
+		if(results.rows.length==0)
+		{
+			alert("No results");
+	 		Backbone.history.navigate("search", {
+      	 	 trigger: true
+     		 });
+		}
+		
+		//populate the view dinamically
+	 	for (var i=0; i<results.rows.length; i++){
 		 console.log(results.rows.item(i).title);
-       $("#a").append('<li class="table-view-cell media"><a style="top:0px" class="navigate-right" id='+results.rows.item(i).title+'><img class="media-object pull-left" src='+results.rows.item(i).img+' width=108 heigth=178 ><div class="media-body"><h4>'+results.rows.item(i).title.replace(/_/g," ")+'</h4><p>'+results.rows.item(i).genre+'</p></div></a></li>');
-      }
-	 i=0;
-}
+      	 $("#a").append('<li class="table-view-cell media"><a style="top:0px" class="navigate-right" id='+results.rows.item(i).title+'><img class="media-object pull-left" src='+results.rows.item(i).img+' width=108 heigth=178 ><div class="media-body"><h4>'+results.rows.item(i).title.replace(/_/g," ")+'</h4><p>'+results.rows.item(i).genre+'</p></div></a></li>');
+     	 }
+		 i=0;
+		}
 
-function errorCB(err) {
-   console.log("Error processing SQL: "+err.code);
-}
-//opens database and queries it
-var db = window.openDatabase("Database", "1.0", "Database media", 200000);
-db.transaction(queryDB, errorCB);
+		function errorCB(err) {
+   			console.log("Error processing SQL: "+err.code);
+		}
+		//opens database and queries it
+		var db = window.openDatabase("Database", "1.0", "Database media", 200000);
+		db.transaction(queryDB, errorCB);
 
-$(this.el).html(this.template());
+		$(this.el).html(this.template());
 
       return this;
 
@@ -95,14 +98,14 @@ $(this.el).html(this.template());
 	detail: function(e) {
 		var search=e.currentTarget.id;
 		var category=sessionStorage.getItem("searchcat");
-			console.log(search);
-		//query to database
+		
+	//query to database for specific element
 	function queryDB(tx) 
 		{
 	  tx.executeSql('SELECT * FROM "'+category+'" WHERE title="'+ search+ '"', [], querySuccess, errorCB);
 	}
 
-	//stores the result to load it in............
+	//stores the result
 	function querySuccess(tx, results) {
 	var m=new Media({year:results.rows.item(0).year, title:results.rows.item(0).title, genre:results.rows.item(0).genre, img:results.rows.item(0).img, txt:results.rows.item(0).txt});
 	sessionStorage.setItem("details",JSON.stringify(m));
@@ -117,26 +120,21 @@ $(this.el).html(this.template());
 	db.transaction(queryDB, errorCB);
 		
 	var count=1;
-
-var counter=setInterval(timer, 500); //1000 will  run it every 1 second
-
-function timer()
-{
-  count=count-1;
-  if (count <= 0)
-  {
-     clearInterval(counter);
-     //counter ended, do something here
-	  sessionStorage.setItem("prevpage", "result");
-	  Backbone.history.navigate("detail", {
-        trigger: true
-      });
+	var counter=setInterval(timer, 500); //1000 will  run it every 1 second
+	function timer()
+	{
+  		count=count-1;
+  		if (count <= 0)
+  		{
+     		clearInterval(counter);
+     		//counter ended, do something here
+	  		sessionStorage.setItem("prevpage", "result");
+	  		Backbone.history.navigate("detail", {
+        	trigger: true
+      		});
       }
-}
-
-	
-		
-     		},
+	}
+	},
     
 	
     search: function(e) {

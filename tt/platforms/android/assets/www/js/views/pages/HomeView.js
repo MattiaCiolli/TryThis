@@ -32,6 +32,7 @@ var HomeView = Utils.Page.extend({
       "tap #card": "search",
 	  "tap #about": "about",
 	  "tap #logout": "logout",
+	  "tap #help": "help",
 	  "tap #account": "account",
 	  "tap #searchmovies": "search",
 	  "tap #searchgames": "search",
@@ -43,9 +44,11 @@ var HomeView = Utils.Page.extend({
     render: function() {
 		
       $(this.el).html(this.template());
+		
+		//creates the slideout menu enabling its components
 		var slideout = new Slideout({
-        'panel': this.$el.find("#main")[0],//document.getElementById('panel'),
-        'menu': this.$el.find("#menu")[0],//document.getElementById('menu'),
+        'panel': this.$el.find("#main")[0],
+        'menu': this.$el.find("#menu")[0],
         'padding': 248,
         'tolerance': 70,
 		'touch': false
@@ -68,6 +71,12 @@ var HomeView = Utils.Page.extend({
           slideout.close();
 			}
         });
+		this.$el.find("#help")[0].addEventListener('tap', function() {
+          if(slideout.isOpen())
+			{
+          slideout.close();
+			}
+        });
 				
 		this.$el.find("#hamb")[0].addEventListener('click', function() {
           	
@@ -80,8 +89,7 @@ var HomeView = Utils.Page.extend({
           	slideout.close();
 			}
 		});
-		
-										
+												
 	 return this;
     },
 	
@@ -104,8 +112,14 @@ var HomeView = Utils.Page.extend({
       });
     },
 	 
+	 help: function(e) {
+      Backbone.history.navigate("help", {
+        trigger: true
+      });
+    },
 	 
-	 /////////////////////////////////////////// USARE QUESTA FUNZIONE PER DISTINGUERE LE RICERCHE PER CATEGORIE 
+	 
+	 //search depending on the category selected
 	 search: function(e) {
 		 if(e.currentTarget.id=="searchmovies")
 		 {
@@ -116,29 +130,29 @@ var HomeView = Utils.Page.extend({
 		 }
 		 else if(e.currentTarget.id=="searchgames")
 		 {
-	 sessionStorage.setItem("searchelement", "searchgames");
-      Backbone.history.navigate("search", {
+	 	sessionStorage.setItem("searchelement", "searchgames");
+      	Backbone.history.navigate("search", {
         trigger: true
 	      });
 	   }
 		 else if(e.currentTarget.id=="searchbooks")
 		 {
 		sessionStorage.setItem("searchelement", "searchbooks");
-      Backbone.history.navigate("search", {
+      	Backbone.history.navigate("search", {
         trigger: true
 	      });
 	   }
 		 else if(e.currentTarget.id=="searchseries")
 		 {
 		sessionStorage.setItem("searchelement", "searchseries");
-      Backbone.history.navigate("search", {
+      	Backbone.history.navigate("search", {
         trigger: true
 	      });
 	   }
 		 else if(e.currentTarget.id=="searchmusic")
 		 {
 		sessionStorage.setItem("searchelement", "searchmusic");
-      Backbone.history.navigate("search", {
+      	Backbone.history.navigate("search", {
         trigger: true
 	      });
 	   }

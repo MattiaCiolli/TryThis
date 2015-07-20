@@ -44,22 +44,28 @@ var SignView = Utils.Page.extend({
 	 
 	 signin: function(e) {
 		 
+		 //gets form's values
 		 var username= this.$el.find("#username")[0].value;
 		 var pwd=this.$el.find("#password")[0].value;
 		 var email=this.$el.find("#email")[0].value;
 		  var db = window.openDatabase("Database", "1.0", "Database media", 200000);
 		db.transaction(queryDB1);
+		 
+		 //verify if user already exists
 		 function queryDB1(tx) 
 		{
 			tx.executeSql('SELECT * FROM USER WHERE username="'+username+'"', [], q1Success, errorCB);
 		}
 		
 		function q1Success(tx, results) {
+			
+			//if not exists create it
 			if(results.rows.length==0)
 		{
 			alert("Created: "+username);
 		}
-
+		
+			//if exists reload and error
 			if(results.rows.length!=0)
 		{
 					
@@ -74,25 +80,25 @@ var SignView = Utils.Page.extend({
 		}
 			
       }
-		
-		
+				
 		 db.transaction(queryDB);
+		
+		//inserts new user in DB. If already exists doesn't perform this action
 		 function queryDB(tx) 
 		{
-			
 			tx.executeSql('INSERT INTO USER (username, pwd, email) VALUES ("'+username+'", "'+pwd+'", "'+email+'")');
 		}
 
 		
-function errorCB(err) {
-    console.log("Error processing SQL: "+err.message);
-}
+		function errorCB(err) {
+    		console.log("Error processing SQL: "+err.message);
+			}
 	 
-	    
+	    // simulates session keeping the username. Used when he reopens the app and goes directly to home instead of signin/login
 		localStorage.setItem("user", username);
 		 Backbone.history.navigate("home", {
         trigger: true
-      });
+      	});
 	},
     
 });

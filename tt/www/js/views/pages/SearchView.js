@@ -35,6 +35,7 @@ var SearchView = Utils.Page.extend({
 	
     render: function() {
       $(this.el).html(this.template());
+		//set active element depending on category selected
 		if(sessionStorage.getItem("searchelement")== "searchmovies")
 			{this.setActiveSearch("#Movies");
 			this.setActiveSearch("#M");}
@@ -54,7 +55,7 @@ var SearchView = Utils.Page.extend({
     },
 	
 	 results: function(e) { 
-		 
+		 //cleans the title and stores it with category to setup the research
 		 if(e.currentTarget.id=="searchM")
 		 { 
 			 var input=this.$el.find("#inputM")[0].value;
@@ -97,6 +98,7 @@ var SearchView = Utils.Page.extend({
       });
     },
 	 
+	 //sets active the segmented control used
 	 setActiveSearch: function(elementId) {
        this.$el.find(elementId)[0].classList.add("active");
     },

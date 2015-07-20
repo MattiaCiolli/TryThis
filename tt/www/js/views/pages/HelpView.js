@@ -3,16 +3,16 @@ define(function(require) {
   var Backbone = require("backbone");
   var Utils = require("utils");
 	
-var AboutView = Utils.Page.extend({
+var HelpView = Utils.Page.extend({
 
-    constructorName: "AboutView",
+    constructorName: "HelpView",
 
-    id: "about",
-	className: "i-g page", 
-	
+    id: "help",
+	className: "i-g page", //fondamentale per funzionamento di ratchet
+	  
     initialize: function() {
       // load the precompiled template
-      this.template = Utils.templates.about;
+      this.template = Utils.templates.help;
       // here we can register to inTheDOM or removing events
       // this.listenTo(this, "inTheDOM", function() {
       //   $('#content').on("swipe", function(data){
@@ -41,5 +41,5 @@ var AboutView = Utils.Page.extend({
     }
 	
 });
-	  return AboutView;
+	  return HelpView;
 });

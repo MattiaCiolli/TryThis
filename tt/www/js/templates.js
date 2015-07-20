@@ -19,5 +19,6 @@ define({
 	about:"templates/about.html",
 	detail:"templates/detail.html",
 	user:"templates/user.html",
-	category:"templates/category.html"
+	category:"templates/category.html",
+	help:"templates/help.html"
 });

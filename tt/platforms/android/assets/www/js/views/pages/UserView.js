@@ -47,46 +47,48 @@ var UserView = Utils.Page.extend({
     },
 	 
 	 category: function(e) {
+		 
+		 //go to selected category
 		 if(e.currentTarget.id=="movies")
 		 {
 			 sessionStorage.setItem("catID", "FILM");
 			
-      Backbone.history.navigate("category", {
-        trigger: true
-      });
-    }
+      		Backbone.history.navigate("category", {
+        	trigger: true
+      		});
+   		 }
 		 if(e.currentTarget.id=="music")
 		 {
 			 sessionStorage.setItem("catID", "BAND");
 			 
-      Backbone.history.navigate("category", {
-        trigger: true
-      });
-    }
+      		Backbone.history.navigate("category", {
+        	trigger: true
+      		});
+    	}
 		 if(e.currentTarget.id=="games")
 		 {
 			 sessionStorage.setItem("catID", "GAME");
 			
-      Backbone.history.navigate("category", {
-        trigger: true
-      });
-    }
+      		Backbone.history.navigate("category", {
+        	trigger: true
+      		});
+    	}
 		 if(e.currentTarget.id=="books")
 		 {
 			 sessionStorage.setItem("catID", "BOOK");
 			 
-      Backbone.history.navigate("category", {
-        trigger: true
-      });
-    }
+      		Backbone.history.navigate("category", {
+        	trigger: true
+      		});
+    	}
 		 if(e.currentTarget.id=="series")
 		 {
 			 sessionStorage.setItem("catID", "SERIES");
 			 
-      Backbone.history.navigate("category", {
-        trigger: true
-      });
-    }
+      		Backbone.history.navigate("category", {
+        	trigger: true
+      		});
+    	}
 	 }
 	
 });

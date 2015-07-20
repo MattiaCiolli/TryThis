@@ -13,6 +13,7 @@ define(function(require) {
   var DetailView = require("views/pages/DetailView");
   var UserView = require("views/pages/UserView");
   var CategoryView = require("views/pages/CategoryView");
+  var HelpView = require("views/pages/HelpView");
   var User = require("models/User");
   var Testo = require("models/Testo");
   var Media=require("models/Media");
@@ -34,7 +35,8 @@ define(function(require) {
 	  "about":"about",
 	  "detail":"detail",
 	  "user":"user",
-	  "category":"category"
+	  "category":"category",
+	  "help":"help"
 		
     },
 	
@@ -46,6 +48,7 @@ define(function(require) {
     },
 
 	category: function() {
+		//sets categoryview's title and shows the right content
      	if(sessionStorage.getItem("catID")=="FILM")
 		{var t=new Testo({txt:"My Movies"});}
 		else if(sessionStorage.getItem("catID")=="BOOK")
@@ -63,10 +66,10 @@ define(function(require) {
       this.changePage(page);
     },
 	
-user: function() {
-     
-var actualuser=new User({username:localStorage.getItem("user")});
-      var page = new UserView({ 
+	user: function() {
+     //shows username in userview
+		var actualuser=new User({username:localStorage.getItem("user")});
+      	var page = new UserView({ 
          model: actualuser 
        }); 
 
@@ -74,12 +77,11 @@ var actualuser=new User({username:localStorage.getItem("user")});
     },
 	
 
-detail: function() {
-	
-     
+	detail: function() {
+	//gets the tapped element and shows it in detailview
 	var detail=JSON.parse(sessionStorage.getItem("details"));
-var media=new Media({year:detail.year, title:detail.title.replace(/_/g," "), genre:detail.genre, img:detail.img, txt:detail.txt});
-var page = new DetailView({model:media});
+	var media=new Media({year:detail.year, title:detail.title.replace(/_/g," "), genre:detail.genre, img:detail.img, txt:detail.txt});
+	var page = new DetailView({model:media});
       this.changePage(page);
     },
 	
@@ -87,6 +89,13 @@ var page = new DetailView({model:media});
      
 		// create the view and show it
       var page = new AboutView();
+      this.changePage(page);
+    },
+	
+	help: function() {
+     
+		// create the view and show it
+      var page = new HelpView();
       this.changePage(page);
     },
 	
@@ -141,6 +150,7 @@ var page = new DetailView({model:media});
         this.structureView.trigger("inTheDOM");
       }
       // go to first view
+	  // if logged skips the signin/login view 
 	  var user=localStorage.getItem("user");
 	  console.log(user);
 	  if(user==null)

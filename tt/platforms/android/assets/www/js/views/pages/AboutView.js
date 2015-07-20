@@ -8,8 +8,8 @@ var AboutView = Utils.Page.extend({
     constructorName: "AboutView",
 
     id: "about",
-	className: "i-g page", //fondamentale per funzionamento di ratchet
-	  
+	className: "i-g page", 
+	
     initialize: function() {
       // load the precompiled template
       this.template = Utils.templates.about;

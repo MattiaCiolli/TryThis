@@ -61,51 +61,54 @@ var target = this.$el.find(".media-object");
 var spinner = new Spinner(opts).spin(target);
 		
       $(this.el).html(this.template(this.model.toJSON()));
-	
-	var deleter = this.$el.find("#remove")[0];
+	//hides share or delete depending the provenience view
+		var deleter = this.$el.find("#remove")[0];
 		var adder=this.$el.find("#add")[0];
 		 if(sessionStorage.getItem("prevpage")== "category")
 		 {
-adder.style.visibility="hidden";
+			adder.style.visibility="hidden";
 		 }
 		 if(sessionStorage.getItem("prevpage")== "result")
 		 {
-deleter.style.visibility="hidden"; 
+			deleter.style.visibility="hidden"; 
 		 }
       return this;
     },
 	
+	//add to prefs
 	 add: function(e) {
 		 var db = window.openDatabase("Database", "1.0", "Database media", 200000);
 		db.transaction(queryDB, errorCB, qSuccess);
 		 function queryDB(tx) 
 		{
-	var detail=JSON.parse(sessionStorage.getItem("details"));
-	var category=sessionStorage.getItem("searchcat");
-	tx.executeSql('INSERT INTO PREFS (idp, title, user, txt, genre, year, img, category) VALUES ("'+detail.title+localStorage.getItem("user")+'","'+detail.title+'", "'+localStorage.getItem("user")+'", "'+detail.txt+'","'+detail.genre+'", "'+detail.year+'","'+detail.img+'","'+category+'")');
- }
+			var detail=JSON.parse(sessionStorage.getItem("details"));
+			var category=sessionStorage.getItem("searchcat");
+			tx.executeSql('INSERT INTO PREFS (idp, title, user, txt, genre, year, img, category) VALUES ("'+detail.title+localStorage.getItem("user")+'","'+detail.title+'", "'+localStorage.getItem("user")+'", "'+detail.txt+'","'+detail.genre+'", "'+detail.year+'","'+detail.img+'","'+category+'")');
+ 		}
 
 		function qSuccess(tx, results) {
-alert("Inserted in preferences");
+			alert("Inserted in preferences");
 			 if(sessionStorage.getItem("prevpage")== "category")
 		 {
-     	 Backbone.history.navigate("category", {
-        trigger: true
-      	});
+     	 	Backbone.history.navigate("category", {
+        	trigger: true
+      		});
 		 }
 		 else if(sessionStorage.getItem("prevpage")== "result")
 		 {
 			 Backbone.history.navigate("results", {
         	trigger: true
-      	});
+      		});
 		 }
-      }
+      }	
 
-function errorCB(err) {
+	function errorCB(err) {
     console.log("Error processing SQL: "+err.message);
-}
-},
+	}
+	},
 	 
+	 
+	//remove from prefs
 	  del: function(e) {
      var db = window.openDatabase("Database", "1.0", "Database media", 200000);
 		db.transaction(queryDB, errorCB, qSuccess);
@@ -113,42 +116,43 @@ function errorCB(err) {
 		{
 	var detail=JSON.parse(sessionStorage.getItem("details"));
 	tx.executeSql('DELETE FROM PREFS WHERE user="'+localStorage.getItem("user")+'" AND title="'+detail.title+'"');
- }
+ 	}
 
 		function qSuccess(tx, results) {
-alert("Deleted from preferences");
+			alert("Deleted from preferences");
 			 if(sessionStorage.getItem("prevpage")== "category")
 		 {
-     	 Backbone.history.navigate("category", {
-        trigger: true
-      	});
+     	 	Backbone.history.navigate("category", {
+        	trigger: true
+      		});
 		 }
 		 else if(sessionStorage.getItem("prevpage")== "result")
 		 {
 			 Backbone.history.navigate("results", {
         	trigger: true
-      	});
+      		});
 		 }
       }
 
-function errorCB(err) {
-    alert("Error processing SQL: "+err.message);
-}
-},
+		function errorCB(err) {
+    		console.log("Error processing SQL: "+err.message);
+		}
+		},
 	
-	 back: function(e) { 
+	 
+	  back: function(e) { 
 		 
 		 if(sessionStorage.getItem("prevpage")== "category")
 		 {
-     	 Backbone.history.navigate("category", {
-        trigger: true
-      	});
+     	 	Backbone.history.navigate("category", {
+        	trigger: true
+      		});
 		 }
 		 else if(sessionStorage.getItem("prevpage")== "result")
 		 {
 			 Backbone.history.navigate("results", {
         	trigger: true
-      	});
+      		});
 		 }
 		 
     },

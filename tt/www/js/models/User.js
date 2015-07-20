@@ -4,8 +4,6 @@ define(function(require) {
 
 	var User = Backbone.Model.extend({
 		
-		
-
 		defaults: {
 		username: 'none',
 		
