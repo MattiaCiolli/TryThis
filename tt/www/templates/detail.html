@@ -5,16 +5,16 @@
  </header>
  
  
-<div class="content" style="padding-top: 60px">
+<div class="content">
 <div class="card">
  <ul class="table-view">
   <li class="table-view-cell media">
     
-      <img class="media-object pull-left" src={{img}} width=180; height=260;>
+      <img id="spnr" class="media-object pull-left" src={{img}} width=180; height=260;>
       <div class="media-body">
        <h4>{{title}}</h4>
 	   <p>{{genre}}</p><BR/>
-	    <button class="btn btn-block" onclick="window.plugins.socialsharing.share('Discovered using TryThis!', null, 'img//ttlogo.png', null)">
+	    <button class="btn btn-block" onclick="window.plugins.socialsharing.share('Discovered with TryThis application', null, 'www/img/ttlogo.png', null)">
   			<span class="icon icon-share"></span>
   				Share
 			</button>
@@ -28,7 +28,7 @@
 			</button>
 		</div>
 	</li>
-		<li class="table-view-divider">Plot</li>
+		<li class="table-view-divider">Infos</li>
 		 <li class="table-view-cell">
 		 {{txt}}
 		 </li>

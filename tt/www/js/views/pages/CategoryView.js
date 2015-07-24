@@ -49,8 +49,7 @@ var CategoryView = Utils.Page.extend({
 , hwaccel: false // Whether to use hardware acceleration
 , position: 'absolute' // Element positioning
 }
-var target = this.$el.find(".media-object");
-var spinner = new Spinner(opts).spin(target);
+
 		
 		//gets the category to query
 		var category=sessionStorage.getItem("catID");
@@ -65,7 +64,7 @@ var spinner = new Spinner(opts).spin(target);
 	//populates dinamically the view
 	 for (var i=0; i<results.rows.length; i++)
 	 {
-	   $("#a").append('<li class="table-view-cell media"><a style="top:0px" class="navigate-right" id='+results.rows.item(i).title+'><img class="media-object pull-left" src='+results.rows.item(i).img+' width=108 heigth=178 ><div class="media-body"><h4>'+results.rows.item(i).title.replace(/_/g," ")+'</h4><p>'+results.rows.item(i).genre+'</p></div></a></li>');
+	   $("#a").append('<li class="table-view-cell media"><a class="navigate-right" id='+results.rows.item(i).title+'><img id="spnr" class="media-object pull-left" src='+results.rows.item(i).img+' width=108 heigth=178 ><div class="media-body"><h4>'+results.rows.item(i).title.replace(/_/g," ")+'</h4><p>'+results.rows.item(i).genre+'</p></div></a></li>');
      }
 	 i=0;
 		}
@@ -79,6 +78,8 @@ var spinner = new Spinner(opts).spin(target);
 				db.transaction(queryDB, errorCB);
 
 	$(this.el).html(this.template(this.model.toJSON()));
+		var target = this.$el.find("#spnr");
+		var spinner = new Spinner(opts).spin(target);
 	return this;
     },
 	

@@ -41,7 +41,7 @@ define(function(require) {
     },
 	
 	initialize: function(options) {
-		
+		//Creates the DB if necessary
 		var dbase=new DB();
 		dbase.CreateDB();
       this.currentView = undefined;

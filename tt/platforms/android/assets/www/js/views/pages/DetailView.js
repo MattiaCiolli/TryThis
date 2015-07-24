@@ -57,10 +57,11 @@ var DetailView = Utils.Page.extend({
 , hwaccel: false // Whether to use hardware acceleration
 , position: 'absolute' // Element positioning
 }
-var target = this.$el.find(".media-object");
-var spinner = new Spinner(opts).spin(target);
+
 		
       $(this.el).html(this.template(this.model.toJSON()));
+		var target = this.$el.find("#spnr")[0];
+		var spinner = new Spinner(opts).spin(target);
 	//hides share or delete depending the provenience view
 		var deleter = this.$el.find("#remove")[0];
 		var adder=this.$el.find("#add")[0];
