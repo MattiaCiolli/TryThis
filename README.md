@@ -9,4 +9,6 @@ The app gives all the results similar in genre.
 The user can add them to preferencies to remember it later, or share his new discovery on pretty all sharing channells ( facebook, tweeter, whatsapp, sms, email...).
 Also he can access to his account (in the side menu) to consult and edit his own preferencies.
 
-App developed with Apache Cordova, based on Backbone.js, RequireJS and Handlebars.
+App developed with Apache Cordova, based on Backbone.js, RequireJS and Handlebars. Works on Android.
+
+Project in the "tt" folder.
